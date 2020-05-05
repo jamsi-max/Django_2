@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse, get_object_or_404
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.urls import reverse
 from django.conf import settings
 from django.http import JsonResponse
@@ -48,11 +48,11 @@ def reg(request):
         if reg_form.is_valid():
             user = reg_form.save()
             if send_verify_mail(user):
-                print('сообщение подтверждения отправлено')
-                return HttpResponseRedirect(reverse('main'))
+                messages.success(request, f'An email - {user.email} was sent to the specified email address to confirm your account')
+                return HttpResponseRedirect(reverse('auth:reg'))
             else:
-                print('ошибка отправки сообщения')
-                return HttpResponseRedirect(reverse('main'))
+                messages.error(request, 'Error sending message')
+                return HttpResponseRedirect(reverse('auth:reg'))
     else:
         reg_form = ShopUserRegisterForm()
 
@@ -117,8 +117,9 @@ def send_verify_mail(user):
 
 
 def verify(request, email, activation_key):
+    print(activation_key)
     try:
-        user = get_object_or_404(ShopUser, email=email)
+        user = ShopUser.objects.get(email=email, activation_key=activation_key)
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()

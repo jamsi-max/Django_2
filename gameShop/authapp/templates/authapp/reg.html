@@ -25,9 +25,24 @@
         <form class="form-reg" action="{% url 'auth:reg' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ reg_form.as_p }}
-            <input class="form-reg-btn" type="submit" value="registration">
+            <input for="modal" class="form-reg-btn" type="submit" value="registration">
         </form>
     </div>
+
+    {% if messages %}
+     <div class="modal-email-masseg">
+        <ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+            <a href="{% url 'main' %}">OK</a>
+        </li>
+    {% endfor %}
+        </ul>
+        
+    </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block contact %}
