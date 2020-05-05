@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/style_reg.css' %}">
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block auth %}
+{% endblock %}
+
+{% block header %}
+        <ul class="info">
+            <li class="info-list logo"><a href="{% url 'main' %}" class="logo-link"><span class="historical">Store</span><br><span class="games">GAMES</span></a></li>
+            <li class="info-list contact"><div class="tel">+123 456 7890</div><a class="mail" href="#">info@example.com</a></li>
+        </ul>
+{% endblock %}
+
+{% block container %}
+    {% if user %}
+        <h3>Поздравляем!</h3>
+        <br>
+        <h4>Пользователь {{ user.username }} подтвержден.</h4>  
+    {% else %}
+        <h3>Верификация не пройдена</h3>
+    {% endif %}
+    <div class="edit-home">
+        <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+    </div>
+{% endblock %}
+
+{% block contact %}
+{% endblock %}

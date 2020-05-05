@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainapp',
-    'authapp',
-    'basketapp',
-    'adminapp',
-    'searchapp',
+    'mainapp.apps.MainappConfig',
+    'authapp.apps.AuthappConfig',
+    'basketapp.apps.BasketappConfig',
+    'adminapp.apps.AdminappConfig',
+    'searchapp.apps.SearchappConfig',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +134,35 @@ AUTH_USER_MODEL = 'authapp.ShopUser'
 LOGIN_URL = '/'
 
 # JSON_PATH = 'mainapp/json'
+
+# DOMAIN_NAME = 'localhost:8000'
+
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = '25'
+# EMAIL_HOST_USER = 'django@gameshop.local'
+# EMAIL_HOST_PASSWORD = 'geekshop'
+# EMAIL_USE_SSL = False
+
+#вариант python -m smtpd -n -c DebuggingServer localhost:25
+# EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
+ 
+#вариант логирования сообщений почты в виде файлов вместо отправки
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = 'tmp/email-messages/'
+
+DOMAIN_NAME = 'localhost:8000'
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = os.environ.setdefault('DJANGO_EMAIL_HOST_USER', 'django@geekshop.local')
+EMAIL_HOST_PASSWORD = os.environ.setdefault('DJANGO_EMAIL_HOST_PASSWORD', 'geekshop')
+EMAIL_USE_SSL = True
+# EMAIL_USE_TLS = True
+
+#вариант python -m smtpd -n -c DebuggingServer localhost:25
+# EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
+ 
+#вариант логирования сообщений почты в виде файлов вместо отправки
+# создать в корне проекта папку tmp/email-messages
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'tmp/email-messages/'

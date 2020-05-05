@@ -1,5 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse
-from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserChangePassword
+from django.shortcuts import render, HttpResponseRedirect, reverse, get_object_or_404
 from django.contrib import auth
 from django.urls import reverse
 from django.conf import settings
@@ -7,7 +6,10 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.core.mail import send_mail
 
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserChangePassword
+from authapp.models import ShopUser
 
 def login(request):
     if request.is_ajax():
@@ -44,10 +46,14 @@ def logout(request):
 def reg(request):
     if request.method == 'POST':
         reg_form = ShopUserRegisterForm(request.POST, request.FILES)
-
         if reg_form.is_valid():
-            reg_form.save()
-            return HttpResponseRedirect(reverse('main'))
+            user = reg_form.save()
+            if send_verify_mail(user):
+                print('сообщение подтверждения отправлено')
+                return HttpResponseRedirect(reverse('main'))
+            else:
+                print('ошибка отправки сообщения')
+                return HttpResponseRedirect(reverse('main'))
     else:
         reg_form = ShopUserRegisterForm()
 
@@ -80,7 +86,6 @@ def edit(request):
 
 @login_required
 def chpassword(request):
-    
     if request.method == 'POST':
         form = ShopUserChangePassword(user=request.user, data=request.POST)
         if form.is_valid():
@@ -96,3 +101,31 @@ def chpassword(request):
         'form': form,
     }
     return render(request, 'authapp/password.html', context=content)
+
+
+def send_verify_mail(user):
+    verify_link = reverse('auth:verify', 
+    kwargs={
+        'email': user.email, 
+        'activation_key': user.activation_key
+        })
+
+    title = f'Подтверждение учетной записи {user.username}'
+    message = f'Для подтверждения учетной записи {user.username} на портале' \
+              f'{settings.DOMAIN_NAME} перейдите по ссылке: \n' \
+              f'{settings.DOMAIN_NAME}{verify_link}'
+    return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
+def verify(request, email, activation_key):
+    try:
+        user = get_object_or_404(ShopUser, email=email)
+        if user.activation_key == activation_key and not user.is_activation_key_expired:
+            user.is_active = True
+            user.save()
+            auth.login(request, user)
+        else:
+            print(f'error activation user: {user}')
+        return render(request, 'authapp/verification.html')
+    except Exception as e:
+        print(f'error activation user : {e.args}')
+        return HttpResponseRedirect(reverse('main'))
