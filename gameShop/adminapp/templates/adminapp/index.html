@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+
+{% block header %}
+    <ul class="info">
+        <li class="info-list logo"><a href="{% url 'main' %}" class="logo-link"><span class="historical">Store</span><br><span class="games">GAMES</span></a></li>
+        <li class="info-list contact"><div class="tel">+000 000 0000</div><a class="mail" href="#">jony@mail.com</a></li>
+    </ul>
+{% endblock %}
+
+
+{% block container %}
+    <h1>{{ page_title|title }}</h1>
+
+    {% block adminMenu %}
+    <div class="admin-block">
+        {% include 'includes/inc__admin_menu.html' %}
+    </div>
+    {% endblock %}
+
+    <div class="admin-content">
+        {% block contentList %}
+            <div class="create-btn">
+                <a href="#" class="admin-create-btn">+ create new user</a>
+            </div>
+            {% for item in user_list %}
+                <div class="admin-user-item {% if not item.is_active %}no-active{% endif %}">
+                    <img src="{{ mediaURL }}{{ item.avatar|default:'noname.jpg' }}" alt="avatar">
+                    <div>{% if item.is_superuser %}<b>Admin</b>{% else %}User{% endif %}</div>
+                    <div>{{ item.username }}</div>
+                    <div>{{ item.email }}</div>
+                    <div>{{ item.last_login }}</div>
+                    <div class="admin-item-btn">
+                        <a href="#" class="btn-edit admin-btn-hover">edit</a>
+                        <a href="#" class="btn-dell admin-btn-hover">{% if item.is_active %}dell{% else %}recover{% endif %}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endblock contentList %} 
+    </div>
+         
+    <div class="edit-home">
+            <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+    </div>
+         
+{% endblock container %}
+
+
+{% block contact %}
+{% endblock %}

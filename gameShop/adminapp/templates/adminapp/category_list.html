@@ -1,0 +1,20 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block contentList %}
+    <div class="create-btn">
+        <a href="#" class="admin-create-btn">+ create new category</a>
+    </div>
+    {% for item in category_list %}
+        <div class="admin-user-item {% if not item.is_active %}no-active{% endif %}">
+            <div><b>{{ item.name|title }}</b></div>
+            <div class="admin-category-desc"><i>desc: </i> {{ item.description }}</div>
+            <div class="admin-item-btn">
+                
+                <a href="#" class="btn-edit admin-btn-hover">edit</a>
+                <a href="#" class="btn-dell admin-btn-hover">{% if item.is_active %}dell{% else %}recover{% endif %}</a>
+            </div>
+            <a href="{% url 'admin:product' item.pk %}" class="btn-products admin-btn-hover">products category</a>
+        </div>
+    {% endfor %}
+{% endblock %}

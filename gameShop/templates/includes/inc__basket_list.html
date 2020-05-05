@@ -1,0 +1,21 @@
+<div>
+    {% for item in basket %}
+            <div class="basket-list-item">
+                <img class="basket-img" src="{{ mediaURL }}{{ item.product.image }}" alt="">
+                <span class="basket-item-name">{{ item.product.name }}</span>
+                <span>{{ item.product.category.name|title }}</span>
+                <span>{{ item.product.price }}</span>
+                <input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}">
+                <span>{{ item.get_price }}</span>
+                <a class="basket-remove-btn" href="{% url 'basket:remove' item.pk %}">REMOVE</a>
+            </div>
+    {% endfor %}
+</div>
+
+{% if basket %}
+<div class="basket-total">
+    <span>Total products - {{ basket.0.get_quantity }}. Total amount - {{ basket.0.get_total }}$</span> 
+</div>
+{% else %}
+    <span class="basket-empty-text">Your basket is empty</span>
+{% endif %}

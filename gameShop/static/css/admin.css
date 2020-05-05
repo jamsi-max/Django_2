@@ -1,0 +1,269 @@
+h1{
+    text-align: center;
+    margin: 3% 0 2% 0;
+    text-transform: uppercase;
+    font-size: 2.5em;
+}
+.admin-block{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-menu{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 25vw;
+}
+.admin-menu li{
+}
+.admin-menu a{
+    text-decoration: none;
+    color: grey;
+    font-size: 2em;
+}
+.admin-menu a:hover{
+    color: black;
+}
+.admin-content img{
+    width: 8%;
+}
+.admin-user-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin: 2% auto;
+    font-size: 1.5em;
+}
+.admin-item-btn{
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+    width: 10%;
+}
+.admin-item-btn a{
+    text-decoration: none;
+    padding: 15%;
+    text-transform: uppercase;
+    border: 1px solid;
+    margin-top: 10%;
+    width: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+.btn-edit{
+    color: #4b00ff;
+}
+.btn-dell{
+    color: red;
+}
+.btn-products{
+    color: darkmagenta;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid;
+    width: 150px;
+    text-align: center;
+    padding: 1%;
+}
+.admin-btn-hover:hover,
+.create-btn a:hover{
+    color: #838383;
+}
+.create-btn{
+    text-align: center;
+    margin-top: 3%;
+}
+.create-btn a{
+    text-decoration: none;
+    color: green;
+    font-size: 2em;
+    border: 1px solid;
+    padding: 0.5%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.edit-home{
+    margin: 2% auto;
+    border: 1px solid #838383;
+    padding: 0.5% 0;
+    width: 7%;
+    display: flex;
+    justify-content: center;
+}
+.edit-home-btn{
+    text-decoration: none;
+    color: #838383;
+    font-size: 2em;
+}
+.edit-home:hover > a,
+.edit-home:hover{
+    color: red;
+    border-color: red;
+    cursor: pointer;
+}
+.admin-product-name{
+    width: 12%;
+    text-align: center;
+}
+.admin-category-desc{
+    text-align: start;
+    flex: auto;
+    margin-left: 2%;
+    width: 70%;
+}
+.admin-news-title{
+    width: 20%;
+}
+.admin-news-desc{
+    width: 40%;
+    text-align: start;
+}
+.admin-form-new-add{
+    display: flex;
+    justify-content: center;
+}
+.admin-form{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+.admin-form p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-form label{
+    color: #838383;
+    font-family: Roboto Condensed;
+    font-size: 1.3em;
+    font-weight: 400;
+}
+.admin-form .form-item-news-add{
+    width: 69%;
+    border: 1px solid #999999;
+    color: #838383;
+    font-family: Roboto Condensed;
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 2;
+    padding-left: 10px;
+    margin: 10px 0;
+}
+.admin-form textarea{
+    height: 250px;
+}
+.news-add-btn{
+    width: 40%;
+    margin: 0 auto;
+    padding: 2%;
+    background: none;
+    outline: none;
+    border: 1px solid #999999;
+    margin-top: 5%;
+    color: #3a3535;
+    font-family: Roboto Condensed;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+.news-add-btn:hover{
+    color: red;
+    border-color: red;
+    cursor: pointer;
+}
+.errorlist{
+    list-style-type: none;
+    color: red;
+    font-size: 1.5em;
+    margin: 0 auto;
+}
+.admin-content h2{
+    color: red;
+    text-align: center;
+}
+.admin-form-news-del{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-form-news-del p{
+    font-size: 1.5em;
+    justify-content: center;
+    margin: 5% 0;
+}
+.news-del-btn{
+    background: none;
+    color: red;
+    border: 1px solid;
+    width: 30%;
+    padding: 2%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.news-del-btn:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+.form-cancel-btn{
+    text-decoration: none;
+    border: 1px solid;
+    width: 30%;
+    padding: 2%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #5a63cd;
+}
+.form-cancel-btn:hover{
+    background-color: #5a63cd;
+    color: white;
+}
+
+.admin-menu .active{
+    border-bottom: 3px solid #101010;
+    color: black;
+}
+.no-active{
+    opacity: 0.3;
+}
+.form-btn-block{
+    display: flex;
+    justify-content: space-evenly;
+}
+.form-news-del-info{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid red;
+    margin: 5% 0;
+}
+.form-news-del-info span{
+    margin: 5% 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.paginator{
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+.admin-paginator-btn{
+    margin: 0 1%;
+}
+
+input[type="checkbox"]{
+    height: 35px;
+}
+.admin-content .img-product{
+    width: 10%;
+    position: absolute;
+    left: 15%;
+    top: 120%;
+}

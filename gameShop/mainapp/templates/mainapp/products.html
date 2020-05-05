@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/style_second.css' %}">
+{% endblock %}
+
+
+{% block container %}
+   
+    <div class="container">
+        <div class="gallery gallery-products">
+            <h2 class="gallery-text">Our Gallery</h2>
+            <div class="product-category-menu">
+                <a class=" product-category-menu-item" href="#" data-url="{% url 'products:category' pk=0 page=1 %}">all</a>
+                {% for item in category %}
+                    <a class="product-category-menu-item" href="#" data-url="{{ item.get_absolute_url }}">{{ item.name }}</a>
+                {% endfor %}
+            </div>
+
+            <div class="product-items-block">
+                {% include 'includes/inc__product_item.html' %}
+            </div>
+
+            <div class="paginator">
+                {% include 'includes/inc__paginator.html' %}
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="discount">
+            <div class="discount-item">
+                <div class="discount-item-text">
+                    <p class="discount-dsc">discount</p>
+                    <p class="discount-name">CALL OF DUTY:<br> Modern Warfare 3</p>
+                    <p class="discount-price-dsc">$14.44
+                        <span class="discount-price"> / <span> $28.90</span></span>
+                    </p>
+                    <a class= "buttom-gallery-buy discount-buy" href="#">Buy</a>
+                </div>
+                <img class="discount-img" src="{% static 'img/call-duty-big.jpg' %}" alt="">
+            </div>
+            <div class="discount-item">
+                <div class="discount-item-text">
+                    <p class="discount-dsc">discount</p>
+                    <p class="discount-name">MEDAL OF HONOR</p>
+                    <p class="discount-price-dsc">$15.96
+                        <span class="discount-price"> / <span> $29.99</span></span>
+                    </p>
+                    <a class= "buttom-gallery-buy discount-buy" href="#">Buy</a>
+                </div>
+                <img class="discount-img" src="{% static 'img/honner-big.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
+    <h2>Are you sure you want to {% if productcategory.is_active %}delete{% else %}recovery{% endif %} this {{ productcategory.name }} item?</h2>
+    <div class="admin-form-news-del">
+        <form action="{% url 'admin:category_delete' productcategory.pk %}" method="POST" class="admin-form">
+            {% csrf_token %}
+            <div class="form-news-del-info">
+                <span>Category:</span>
+                <p>{{ productcategory.name }}</p>
+            </div>
+            <div class="form-btn-block">
+                <input type="submit" value="{% if productcategory.is_active %}delete{% else %}recovery{% endif %}" class="news-del-btn">
+                <a href="{% url 'admin:category' %}" class="form-cancel-btn">Cancel</a>
+            </div>
+        </form>
+        
+    </div>  
+{% endblock %}

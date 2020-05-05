@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/style_second.css' %}">
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static 'js/product.js' %}"></script>
+{% endblock %}
+
+{% block container %}
+    <div class="container">
+        <div class="product">
+            <div class="product-img">
+                <img class="product-img-big" src="{{ mediaURL }}{{ current_product.image }}" alt="">
+                <div class="product-gallery">
+                    {% for i in '1234' %}
+                    <a href="#">
+                        <img src="{{ mediaURL }}{{ current_product.image }}" alt="{{ i }}">
+                    </a>
+                    {% endfor %}
+                </div>   
+            </div>
+            <div class="product-text">
+                <div class="product-text-title-price">
+                    <div class="product-text-title-block">
+                        <span class="product-text-title-top">{{ current_name_list.0 }}{% if current_name_list.1 %}:</span>
+                                <span class="product-text-title-bottom">{{ current_name_list.1 }}</span>
+                            {% else %}
+                                </span>
+                            {% endif %}
+                        <span class="product-text-price">${{ current_product.price }}</span>
+                    </div>
+                    {% comment %} <a class= "buttom-gallery-buy product-text-buy" href="{% url 'basket:add' current_product.pk %}">Buy</a> {% endcomment %}
+                    <a name="{{ current_product.pk }}" class= "buttom-gallery-buy product-text-buy" href="#">Buy</a>
+                    <span class="product-text-dsc">{{ current_product.desc_long }}</span>
+                </div>  
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="gallery gallery-main gallery-main-similar">
+            <h2 class="gallery-text gallery-text-similar">Similar games</h2>
+            {% include 'includes/inc__product_item.html' %}
+        </div>
+    </div>
+{% endblock %}

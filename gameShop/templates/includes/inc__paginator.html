@@ -1,0 +1,13 @@
+{% if products_list.has_previous %}
+    <a class="paginator-btn" href="#" data-url="{% url 'products:category' pk products_list.previous_page_number %}"><<</a>
+{% endif %}
+
+{% if products_list.paginator.num_pages > 1 %}
+<div class="paginator-page-info">
+{{ products_list.number }}...{{ products_list.paginator.num_pages }}
+</div>
+{% endif %}
+
+{% if products_list.has_next %}
+    <a class="paginator-btn" href="#" data-url="{% url 'products:category' pk products_list.next_page_number %}">>></a>
+{% endif %}

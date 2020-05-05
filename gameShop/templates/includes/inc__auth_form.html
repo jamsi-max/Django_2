@@ -1,0 +1,13 @@
+<div class="auth-login">
+    <h2>LOGIN</h2>
+    <div class="form-login-errors" style=""></div>
+    <label for="modal" class="btn-modal-close"><div><i class="fa fa-times" aria-hidden="true"></i></div></label>
+    <form id="loginForm" method="post" class="auth-form" data-url="{% url 'auth:login' %}">
+        {% csrf_token %}
+        {% for item in login_form %}
+            <p>{{ item }}</p>
+        {% endfor %}
+        <button id="loginButton" type="button" class="auth-btn-enter">enter</button>  
+    </form>
+    <a href="{% url 'auth:reg' %}" class="auth-reg-btn">registration</a>
+</div>

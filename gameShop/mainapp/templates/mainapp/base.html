@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Historical Games / {{ page_title|title }}
+    </title>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+    
+</head>
+
+<body>
+
+<div class="container">
+    {% block header %}
+        <ul class="info">
+            <li class="info-list logo"><a href="{% url 'main' %}" class="logo-link"><span class="historical">Historical</span><br><span class="games">GAMES</span></a></li>
+            <li class="info-list contact"><i class="fa fa-mobile" aria-hidden="true"></i><div class="tel">+123 456 7890</div><a class="mail" href="#">info@example.com</a></li>
+            <li class="info-list search"><input class="search-input" type="search" placeholder="Search"><a class="button-search" href="#"><img class="icon-search" src="{% static 'img/search.png' %}" alt=""></a></li>
+        </ul>
+        
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+        
+    {% endblock %}
+</div>
+
+{% block container %}
+{% endblock %}
+
+
+<div class="container">
+{% block contact %}
+    <div class="contact-us">
+        <div class="contact-us-title">Contact Us</div>
+        <div class="contact-us-flex">
+            <div class="contact-us-flex-text">
+                <div class="contact-us-flex-text-title">Get in touch with us</div>
+                <div class="contact-us-flex-text-cont">Lorem ipsum dolor sit amet, consectetur adipisicing elit,sheets containing Lorem Ipsum passages sed do, At vero eos et accusamus et iusto odio digs qui blanditiis</div>
+                <div class="contact-us-flex-text-addr">Leningradsky AVE 39, BLDG 79 MOSCOW 125167, Russia</div>
+                <div class="contact-us-flex-text-tel">Telephone : +00 111 222 3333</div>
+                <div class="contact-us-flex-text-fax">FAX : +1 888 888 4444</div>
+                <div class="contact-us-flex-text-email">Email : <span class="contact-us-flex-text-email-span">mail@example.com</span></div>
+            </div>
+            <div class="contact-us-flex-form">
+                <form class="contact-us-flex-form-panel" action="#">
+                    <input class="contact-us-flex-form-item" type="text" placeholder="Name">
+                    <input class="contact-us-flex-form-item" type="email" placeholder="Email">
+                    <textarea class="contact-us-flex-form-item contact-us-flex-form-textarea" name="contact-us-message" id="contact-us-message-id" cols="30" rows="10" placeholder="Message"></textarea>
+                    <a class="contact-us-form-button" href="#">Submit</a>
+                </form>
+            </div>
+        </div>
+        <div class="contact-us-map-title">Route Map</div>
+        <div class="contact-us-map">
+            <iframe src="https://yandex.ru/map-widget/v1/-/CGdsEZMx" width="1169" height="298" style="border : 0" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+    </div> 
+    <div class="arr-contact-us-follow">
+        <a class="arr-contact-us-follow-link" href="#"><img src="{% static 'img/arrow-red.png' %}" alt="arr-up"></a>
+    </div>
+{% endblock %}
+</div>
+    
+<div class="container">
+{% block footer %}
+    <div class="footer">
+        <p class="footer-text">© {% now "Y" %} Исторические Игры. Все права защищены</p>
+    </div>
+{% endblock %}
+</div> 
+
+</body>
+</html>

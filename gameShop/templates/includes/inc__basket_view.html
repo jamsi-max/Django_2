@@ -1,0 +1,7 @@
+<a href="{% url 'basket:index' %}" class="basket-link">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    {% if basket %}
+    <span class="basket-count">{{ basket.0.get_quantity }}</span>
+    <span class="basket-price">{{ basket.0.get_total }}$</span>
+    {% endif %}
+</a>

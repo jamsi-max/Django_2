@@ -1,0 +1,38 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block contentList %}
+    <div class="create-btn">
+        <a href="#" class="admin-create-btn">+ add product</a>
+    </div>
+    {% for object in object_list %}
+        <div class="admin-user-item {% if not object.is_active %}no-active{% endif %}">
+            <img src="/media/{{ object.image|default:'no-image.jpg' }}" alt="{{ object.name }}">
+            <div class="admin-product-name"><b>{{ object.name|title }}</b></div>
+            <div>{{ object.category }}</div>
+            <div><b>{{ object.price }} $</b></div>
+            <div>qty: {{ object.quantity }}</div>
+            <div>dsc: {{ object.discount }} %</div>
+            <div class="admin-item-btn">
+                <a href="#" class="btn-edit admin-btn-hover">edit</a>
+                <a href="#" class="btn-dell admin-btn-hover">{% if object.is_active %}dell{% else %}recover{% endif %}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="paginator">
+        {% if product_list.has_previous %}
+            <a class="admin-paginator-btn" href="{% url 'admin:product' category.pk product_list.previous_page_number %}"><<</a>
+        {% endif %}
+
+        {% if product_list.paginator.num_pages > 1 %}
+            <div class="paginator-page-info">
+                {{ product_list.number }}...{{ product_list.paginator.num_pages }}
+            </div>
+        {% endif %}
+
+        {% if product_list.has_next %}
+            <a class="admin-paginator-btn" href="{% url 'admin:product' category.pk product_list.next_page_number %}">>></a>
+        {% endif %}
+    </div>
+{% endblock %}

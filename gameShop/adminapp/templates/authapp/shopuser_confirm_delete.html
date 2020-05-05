@@ -1,0 +1,24 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
+    <h2>Are you sure you want to delete this user item?</h2>
+    <div class="admin-form-news-del">
+        <form action="{% url 'admin:user_delete' shopuser.pk %}" method="POST" class="admin-form">
+            {% csrf_token %}
+            <div class="form-news-del-info">
+                <span>User:</span>
+                <p>{{ shopuser.username }}</p>
+                <p>{{ shopuser.email }}</p>
+            </div>
+            <div class="form-btn-block">
+                <input type="submit" value="{% if shopuser.is_active %}delete{% else %}recovery{% endif %}" class="news-del-btn">
+                <a href="{% url 'admin:index' %}" class="form-cancel-btn">Cancel</a>
+            </div>
+        </form>
+        
+    </div>  
+{% endblock %}

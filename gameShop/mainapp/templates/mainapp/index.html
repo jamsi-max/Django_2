@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    <div class="header">
+        {{ block.super }}
+
+        <div class="header-text">
+            <p class="Nunc">Nunc eget nibh</p>
+            <br><span class="text-line"></span>
+            <h2 class="Morbi">Morbi in nisl auctor</h2>
+        </div>
+        <ul class="social">
+            {% for item in social_links %}
+                <li class="social-list"><a href="#" class="social-link {{ item.class }}"><img class="social-img" src="{{ mediaURL }}{{ item.image }}" alt="{{ item.alt }}"></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+
+{% block container %}
+
+<div class="container">  
+    <div class="about">
+        <div class="about-text">
+            <h2 class="about-h2">About Us!</h2>
+            <p class="text-p nemo">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Ut&nbsp;enim ad&nbsp;minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut&nbsp;aliquid ex&nbsp;ea&nbsp;commodi consequatur?</p>
+            <p class="text-p quis">Quis autem vel eum iure reprehenderit qui in&nbsp;ea&nbsp;voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+        </div>
+        <div class="about-box">
+            <img class="about-img" src="{% static 'img/main-img-1.jpg' %}" alt="img">
+        </div>
+    </div>  
+</div>
+
+<div class="container">
+    <div class="services">
+        <h2 class="services-text">Services</h2>
+        <div class="services-block">
+            <div class="services-items">
+            {% for item in services %}
+                {% if forloop.counter0 < 3 %}
+                <div class="services-item-left">
+                    <div class="services-item-text">
+                        <p class="services-text-title {% if forloop.first %}services-text-active{% endif %}">{{ item.title }}</p>
+                        <p class="services-text-content">{{ item.content }}</p>
+                    </div>
+                    <div class="services-item-img">
+                        <img src="{{ mediaURL }}{{ item.image }}" alt="img">
+                    </div>
+                </div>
+                {% endif %}
+                {% if forloop.counter0 > 2 %}
+                <div class="services-item-right">
+                    <div class="services-item-img">
+                        <img src="{{ mediaURL }}{{ item.image }}" alt="img">
+                    </div>
+                    <div class="services-item-text">
+                        <p class="services-text-title {% if forloop.first %}services-text-active{% endif %}">{{ item.title }}</p>
+                        <p class="services-text-content">{{ item.content }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div> 
+</div>
+
+<div class="container">
+    <div class="gallery gallery-main">
+        <h2 class="gallery-text gallery-text-main">Our Gallery</h2>
+        {% include 'includes/inc__product_item.html' %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="testimonial">
+        <p class="testimonial-title">Testimonial</p>
+        <img class="testimonial-img" src="{% static 'img/quote.png' %}" alt="quote">
+        <div class="testimonial-slider">
+                <div>
+                <a class="testimonial-slider-arr slider-arr-left" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                </div>
+            <p class="testimonial-donec">Donec feugiat tellus sem, laoreet iaculis orci lobortis vel. Sed sed luctus orci, at lacinia risus. Ut porttitor ante ac tincidunt elementum. Curabitur ex dolor, condimentum vitae nunc vel, pulvinar semper justo. Vestibulum et aliquet magna, maximus dapibus enim. Vestibulum ex lectus, posuere eu viverra at, mattis et enim. Nam efficitur sem et lectus fringilla, at pharetra nulla luctus. Nunc cursus, augue ac ultricies volutpat, neque erat congue justo, ac pretium tellus eros a neque. Integer ipsum sem,<br> consectetur a mollis ac, cursus eu ipsum.</p>
+            <div>
+                <a class="testimonial-slider-arr slider-arr-right" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+        </div>
+        <p class="testimonial-john"><span class="testimonial-john-span">JOHN SMITH</span> <span class="testimonial-founder-span">- FOUNDER</span></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="news">
+        <div class="news-title">News & Events</div>
+        <div class="news-flex">
+            <div class="news-latest-blok">
+                <div class="news-latest-title-text">Latest News</div>
+                <div class="news-latest-blok-calendar-content">
+                    {% for item in news %}
+                        <div class="news-latest-blok-calendar
+                        {% if forloop.counter0 ==  1 %}news-latest-blok-calendar-2
+                        {% elif forloop.counter0 ==  2 %}news-latest-blok-calendar-3
+                        {% endif %}">
+                            <div class="news-calendar-item-1"> 
+                                <div class="news-data news-data-day">{{ item.data|date:"d" }}</div>
+                                <div class="news-data news-data-month">{{ item.data|date:"F"|title }}</div>
+                                <div class="news-data news-data-year">{{ item.data|date:"Y" }}</div>
+                            </div>
+                            <div class="news-calendar-item-2">
+                                <div class="news-calendar-title-text">{{ item.news_tite|capfirst }}</div>
+                                <div class="news-calendar-text-content">{{ item.news_content|capfirst }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="news-featured-blok">
+                <div class="news-featured-title">
+                    <div class="news-featured-title-text">Featured Events</div>
+                    <div class="news-featured-title-arr"><i class="fa featured-fa-angle-left fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa featured-fa-angle-right fa-angle-right" aria-hidden="true"></i></div>
+                </div>
+                <div class="news-featured-img">
+                    <img src="{% static 'img/featured-img-1.jpg' %}" alt="" class="news-featured-img-1">
+                    <img src="{% static 'img/featured-img-2.jpg' %}" alt="" class="news-featured-img-2">
+                    <img src="{% static 'img/featured-img-3.jpg' %}" alt="" class="news-featured-img-3">
+                </div>
+                <div class="news-featured-assumenda-minus">
+                    <div class="news-featured-assumenda news-featured-assumenda-1">− Assumenda Est Cliche Reprehenderit</div>
+                    <div class="news-featured-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                </div>
+                <div class="news-featured-assumenda news-featured-assumenda-2">+ Assumenda Est Cliche Reprehenderit</div>
+                <div class="news-featured-assumenda news-featured-assumenda-3">+ Assumenda Est Cliche Reprehenderit</div>
+                <div class="news-featured-assumenda news-featured-assumenda-4">+ Assumenda Est Cliche Reprehenderit</div>
+            </div>    
+        </div>
+    </div>
+    <div class="arr-news-follow">
+        <a class="arr-news-follow-link" href="#"><img src="{% static 'img/arrow-red.png' %}" alt="arr-up"></a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="team">
+        <div class="team-title">Our Team</div>
+        <div class="team-flex">
+        {% for item in team %}
+            <div class="team-flex-card">
+                <img src="{{ mediaURL }}{{ item.image }}" alt="{{ item.name }}" class="team-flex-card-img">
+                <div class="team-flex-card-title">{{ item.name }}</div>
+                <div class="team-flex-card-post">{{ item.post }}</div>
+                <div class="team-flex-card-social">
+                    <a class="team-flex-card-social-link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a class="team-flex-card-social-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a class="team-flex-card-social-link" href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                    <a class="team-flex-card-social-link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="subscribe">
+        <div class="subscribe-title">Subscribe with Us</div>
+        <div class="subscribe-flex">
+            <input class="subscribe-input" type="email" placeholder="Email">
+            <a class="subscribe-button" href="#">Subscribe</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

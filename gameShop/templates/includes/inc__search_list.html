@@ -1,0 +1,15 @@
+{% if search_list %}
+    {% for object in search_list %}
+    
+        <a class="search-item-link"  href="{{ object.get_absolute_url }}">
+            <span>{{ forloop.counter }}</span>
+            <img class="search-item-img" src="{{ mediaURL }}{{ object.image|default:'no-image.jpg' }}" alt="{{ object.alt }}">
+            <span class="search-item-name">{{ object.name }}</span>
+            <span class="{% if object.discount %}search-item-price-through{% endif %}">{{ object.price }}$</span>
+            <span class="search-item-discount">{{ object.discount }}%</span>
+        </a>
+
+    {% endfor %}
+{% else %}
+    <p>The search list is empty</p>
+{% endif %}

@@ -1,0 +1,26 @@
+<div class="flex-gallery-row">
+    {% for item in products_list %}
+        <div class="flex-gallery-item">
+            <a href="{{ item.get_absolute_url }}" class="flex-gallery-link">
+            {% if item.discount %}
+                <span class="flex-gallery-item-discount">{{ item.discount }} %</span>
+            {% endif %}
+                <div class="flex-gallery-item-desc">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.desc }}</p>
+                    {% if item.discount %}
+                        <span class="flex-gallery-item-oldprice">{{ item.price }} $</span>
+                        <span class="flex-gallery-item-newprice">NEW {{ item.get_discount_price|floatformat:2 }} $</span>
+                    {% else %}
+                        <span class="flex-gallery-item-price">{{ item.price }} $</span>
+                    {% endif %}
+                </div>
+                <img src="{{ mediaURL }}{{ item.image|default:'no-image.jpg' }}" alt="{{ item.alt }}" class="flex-gallery-img gallery-activ">
+            </a>
+            <div class="gallery-item-buy">
+                <p class="gallery-titel-buy">{{ item.name }}</p>
+                <a class= "buttom-gallery-buy" href="{{ item.get_absolute_url }}">Buy</a>
+            </div>
+        </div>
+    {% endfor %}  
+</div>

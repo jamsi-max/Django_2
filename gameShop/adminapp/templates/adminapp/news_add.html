@@ -1,0 +1,15 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
+    <div class="admin-form-new-add">
+        <form method="POST" class="admin-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="save" class="news-add-btn">
+        </form>
+    </div>  
+{% endblock %}

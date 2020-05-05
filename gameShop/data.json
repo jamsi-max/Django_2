@@ -1,0 +1,508 @@
+{       
+    "links_menu": [
+        {
+            "pk": 1,
+            "name": "home", 
+            "href": "index"
+        },
+        {
+            "pk": 2,
+            "name": "gallery",
+            "href": "products"
+        },
+        {
+            "pk": 3,
+            "name": "Contact Us", 
+            "href": "contact"
+        }
+    ],
+
+    "category_product":[
+        {
+            "pk": "1",
+            "name": "action",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "pk": "2",
+            "name": "strategy",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "pk": "3",
+            "name": "simulator",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "pk": "4",
+            "name": "sport",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+    ],
+
+    "products_list": [
+        {
+            "pk": "1",
+            "category": "action",
+            "name": "BATTLEFIELD 1", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 21.16,
+            "image": "img/battlefield-game.jpg", 
+            "alt": "BATTLEFIELD 1",
+            "quantity": 5,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "2",
+            "category": "strategy",
+            "name": "STAR WARS:<br>Battlefront II", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 20.50,
+            "image": "img/star-wars-game.jpg", 
+            "alt": "STAR WARS:<br>Battlefront II",
+            "quantity": 11,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "3",
+            "category": "action",
+            "name": "BATTLEFIELD 4", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 38.41,
+            "image": "img/battlefield4-game.jpg", 
+            "alt": "BATTLEFIELD 4",
+            "quantity": 15,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "4",
+            "category": "simulator",
+            "name": "WORLD OF TANKS", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 18.60,
+            "image": "img/world-tanks-game.jpg", 
+            "alt": "WORLD OF TANKS",
+            "quantity": 4,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "5",
+            "category": "action",
+            "name": "ASSASIN’S CREED: Rogue", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 19.99,
+            "image": "img/assassin-game.jpg", 
+            "alt": "ASSASIN’S CREED: Rogue",
+            "quantity": 8,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "6",
+            "category": "action",
+            "name": "FOR HONOR", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 25.57,
+            "image": "img/for-honor-game.jpg", 
+            "alt": "FOR HONOR",
+            "quantity": 7,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "7",
+            "category": "simulator",
+            "name": "WORLD OF WARSHIPS", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 23.99,
+            "image": "img/world-warships-game.jpg", 
+            "alt": "WORLD OF WARSHIPS",
+            "quantity": 8,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "8",
+            "category": "action",
+            "name": "CALL OF DUTY:<br>Infinite Warface", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 28.89,
+            "image": "img/call-duty-game.jpg", 
+            "alt": "CALL OF DUTY: Infinite Warface",
+            "quantity": 9,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "9",
+            "category": "action",
+            "name": "TOMB RAIDER", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 34.45,
+            "image": "img/tom-raider-game.jpg", 
+            "alt": "TOMB RAIDER",
+            "quantity": 11,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "10",
+            "category": "strategy",
+            "name": "RYSE: Son Of Rome", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 29.99,
+            "image": "img/ryse-game.jpg", 
+            "alt": "RYSE: Son Of Rome",
+            "quantity": 10,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "11",
+            "category": "action",
+            "name": "WORL OF WARCRAFT:<br>Wrath Of The Linch King", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 27.99,
+            "image": "img/warcraft-game.jpg", 
+            "alt": "WORL OF WARCRAFT: Wrath Of The Linch King",
+            "quantity": 9,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "12",
+            "category": "strategy",
+            "name": "BATTLESTATION PACIFIC", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 17.65,
+            "image": "img/battlestations-pacific-game.jpg", 
+            "alt": "BATTLESTATION PACIFIC",
+            "quantity": 8,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "13",
+            "category": "sport",
+            "name": "CREW 2", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 16.99,
+            "image": "img/crew-2-game.jpg", 
+            "alt": "CREW 2",
+            "quantity": 3,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "14",
+            "category": "action",
+            "name": "DOOM ETERNAL", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 24.99,
+            "image": "img/doom-eternal-game.jpg", 
+            "alt": "DOOM ETERNAL",
+            "quantity": 7,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "15",
+            "category": "sport",
+            "name": "FIFA 12", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 27.65,
+            "image": "img/fifa-12-game.jpg", 
+            "alt": "FIFA 12",
+            "quantity": 14,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "16",
+            "category": "action",
+            "name": "inFAMOUS", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 19.15,
+            "image": "img/infamous-game.jpg", 
+            "alt": "inFAMOUS",
+            "quantity": 11,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "17",
+            "category": "sport",
+            "name": "NEED for SPEED", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 23.99,
+            "image": "img/need-for-speed-game.jpg", 
+            "alt": "NEED for SPEED",
+            "quantity": 7,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "18",
+            "category": "sport",
+            "name": "PROJECT CARS 2 cover", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 25.99,
+            "image": "img/project-cars-2-game.jpg", 
+            "alt": "PROJECT CARS 2 cover",
+            "quantity": 11,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "19",
+            "category": "simulator",
+            "name": "UFC", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 21.15,
+            "image": "img/ufc-game.jpg", 
+            "alt": "UFC",
+            "quantity": 16,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "20",
+            "category": "strategy",
+            "name": "MIDDLE-EARTH:<br>Shadow Of War", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 21.78,
+            "image": "img/shadow-similar-game.jpg", 
+            "alt": "MIDDLE-EARTH: Shadow Of War",
+            "quantity": 16,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "21",
+            "category": "action",
+            "name": "DISHONORED 2", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 25.64,
+            "image": "img/dishonored-similar-game.jpg", 
+            "alt": "DISHONORED 2",
+            "quantity": 6,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "22",
+            "category": "action",
+            "name": "THIEF", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 31.99,
+            "image": "img/thief-similar-game.jpg", 
+            "alt": "THIEF",
+            "quantity": 9,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        },
+        {
+            "pk": "23",
+            "category": "simulator",
+            "name": "HITMAN", 
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "desc_long": "The plot is set in a fictional history of real world events and follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire peace through control. The story is set in the mid-18th century during the Seven Years' War, and follows Shay Patrick Cormac, an Assassin-turned-Templar who hunts down former members of his Brotherhood after being betrayed by them. Gameplay in Rogue is very similar to that of Black Flag with a mixture of ship-based naval exploration and third-person land-based exploration with some new features.", 
+            "price": 37.89,
+            "image": "img/hitman-similar-game.jpg", 
+            "alt": "HITMAN",
+            "quantity": 7,
+            "discount": 0,
+            "is_active": "True",
+            "created_at": "",
+            "updated_at": ""
+        }
+    ],
+
+    "main_social": [
+        {
+            "pk": "1",
+            "name": "fb",
+            "href": "#",
+            "image": "img/social-fb.png",
+            "alt": "facebook"
+        },
+        {
+            "pk": "2",
+            "name": "tw",
+            "href": "#",
+            "image": "img/social-tw.png",
+            "alt": "twitter"
+        },
+        {
+            "pk": "3",
+            "name": "rss",
+            "href": "#",
+            "image": "img/social-rss.png",
+            "alt": "rss"
+        },
+        {
+            "pk": "4",
+            "name": "vk",
+            "href": "#",
+            "image": "img/social-vk.png",
+            "alt": "vk"
+        }
+    ],
+
+    "services": [
+        {
+            "pk": "1",
+            "title": "Repreh Qui In Ea Voluptate",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "image": "img/pic-fork.png"
+        },
+        {
+            "pk": "2",
+            "title": "Aut Perferendis Doloribus",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "image": "img/pic-dol.png"
+        },
+        {
+            "pk": "3",
+            "title": "Maiores Alias Consequatur",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "image": "img/pic-diag.png"
+        },
+        {
+            "pk": "4",
+            "title": "Voluptatibus Maiores Alias",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "image": "img/pic-arr.png"
+        },
+        {
+            "pk": "5",
+            "title": "Dut Aut Reiciendis Maiores",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "image": "img/pic-hom.png"
+        },
+        {
+            "pk": "6",
+            "title": "Doloribus Volupta Maiores",
+            "content": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "iimagemg": "img/pic-set.png"
+        }
+    ], 
+
+    "news": [
+        {
+            "pk": "1",
+            "data": "01-march-2020",
+            "news_tite": "Fugiat Quo Voluptas",
+            "news_content": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse."
+        },
+        {
+            "pk": "2",
+            "data": "04-march-2020",
+            "news_tite": "FugQui In Ea Voluptate",
+            "news_content": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse."
+        },
+        {
+            "pk": "3",
+            "data": "07-march-2020",
+            "news_tite": "Autem Vel Eum Iure",
+            "news_content": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse."
+        }
+    ],
+    
+    "team": [
+        {
+            "pk": "1",
+            "name": "Mary Jane",
+            "post": "Vestibulum",
+            "img": "img/team-mary.jpg"
+        },
+        {
+            "pk": "2",
+            "name": "Peter Parker",
+            "post": "Vestibulum",
+            "img": "img/team-peter.jpg"
+        },
+        {
+            "pk": "3",
+            "name": "John Watson",
+            "post": "Vestibulum",
+            "img": "img/team-johan.jpg"
+        },
+        {
+            "pk": "4",
+            "name": "Steven Wilson",
+            "post": "Vestibulum",
+            "img": "img/team-steven.jpg"
+        }
+    ]
+}

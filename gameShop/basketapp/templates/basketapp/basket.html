@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/style_basket.css' %}">
+{% endblock %}
+
+{% block js%}
+    {{ block.super }}
+    <script src="{% static 'js/basket.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+        <ul class="info">
+            <li class="info-list logo"><a href="{% url 'main' %}" class="logo-link"><span class="historical">Store</span><br><span class="games">GAMES</span></a></li>
+            <li class="info-list contact"><div class="tel">+000 000 0000</div><a class="mail" href="#">jony@geekbrains.ru</a></li>
+        </ul>
+{% endblock %}
+
+
+{% block container %}
+    <h1>Shopping cart - "{{ request.user|title }}"</h2>
+    <div class="basket-list">
+        {% include 'includes/inc__basket_list.html' %}
+    </div>
+    
+    <div class="edit-home">
+        <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+    </div>
+{% endblock %}
+
+{% block contact %}
+{% endblock %}

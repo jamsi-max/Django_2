@@ -1,0 +1,40 @@
+<ul class="menu menu-contact">
+    <li class="menu-list {% if request.resolver_match.url_name == 'main' %}menu-list-active{% endif %}">
+        <a href="{% url 'main' %}" class="menu-link">
+            Home
+        </a>
+    </li>
+    <li class="menu-list {% if request.resolver_match.url_name == 'category' %}menu-list-active{% endif %}">
+        <a href="{% url 'products:category' pk=0 %}" class="menu-link">
+            Gallery
+        </a>
+    </li>
+    <li class="menu-list {% if request.resolver_match.url_name == 'contact' %}menu-list-active{% endif %}">
+        <a href="{% url 'contact' %}" class="menu-link">
+            Contact Us
+        </a>
+    </li>
+    <li class="menu-list auth-menu">
+        <div class="menu-link-auth">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            {% if user.is_authenticated %}
+                <a href="{% url 'auth:logout' %}" class="auth-logout-link">Logout</a>
+                <a href="{% url 'auth:edit' %}" class="auth-logout-link auth-edit-btn">{{ user.first_name|default:user.username|title }}</a>
+                <div class="basket-block">
+                    <a href="#" class="basket-link">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                        {% if basket %}
+                        <span class="basket-count">{{ basket.count }}</span>
+                        <span class="basket-price">{{ basket.price }}$</span>
+                        {% endif %}
+                    </a>
+                </div>
+            {% else %}    
+                <label for="modal">Login</label>    
+            {% endif %}    
+            {% if user.is_superuser %}
+                <a href="{% url 'admin:index' %}" class="admin-link auth-logout-link auth-edit-btn">ADMIN</a>
+            {% endif %}       
+        </div>
+    </li>
+</ul>

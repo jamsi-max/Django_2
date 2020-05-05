@@ -1,0 +1,19 @@
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block contentList %}
+    <div class="create-btn">
+        <a href="{% url 'admin:news_add' %}" class="admin-create-btn">+ add news</a>
+    </div>
+    {% for object in object_list %}
+        <div class="admin-user-item {% if not object.is_active %}no-active{% endif %}">
+            <div><b>{{ object.data }}</b></div>
+            <div class="admin-news-title">{{ object.news_tite|capfirst }}</div>
+            <div class="admin-news-desc">{{ object.news_content }}</div>
+            <div class="admin-item-btn">
+                {% if object.is_active %}<a href="{% url 'admin:news_update' object.pk %}" class="btn-edit admin-btn-hover">edit</a>{% endif %}
+                <a href="{% url 'admin:news_delete' object.pk %}" class="btn-dell admin-btn-hover">{% if object.is_active %}dell{% else %}recover{% endif %}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
