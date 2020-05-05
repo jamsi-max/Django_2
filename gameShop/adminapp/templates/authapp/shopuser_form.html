@@ -7,7 +7,7 @@
 {% block contentList %}
     <div class="admin-form-new-add">
      <img src="/media/{{ shopuser.avatar|default:'noname.jpg' }}" alt="" class="img-product">
-        <form method="POST" class="admin-form">
+        <form method="POST" class="admin-form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="save" class="news-add-btn">

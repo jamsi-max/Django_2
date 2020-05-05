@@ -20,15 +20,17 @@
 {% endblock %}
 
 {% block container %}
-    {% if user %}
-        <h3>Поздравляем!</h3>
-        <br>
-        <h4>Пользователь {{ user.username }} подтвержден.</h4>  
-    {% else %}
-        <h3>Верификация не пройдена</h3>
-    {% endif %}
-    <div class="edit-home">
-        <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+    <div class="veryfy-block">
+        {% if user.is_authenticated %}
+            <h3>Congratulate!</h3>
+            <br>
+            <h4>The user <b>{{ user.username|title }}</b> was successfully confirmed.</h4>  
+        {% else %}
+            <h3>Verification failed!</h3>
+        {% endif %}
+        <div class="edit-home">
+            <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+        </div>
     </div>
 {% endblock %}
 

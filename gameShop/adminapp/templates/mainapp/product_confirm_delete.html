@@ -7,7 +7,7 @@
 {% block contentList %}
     <h2>Are you sure you want to {% if product.is_active %}delete{% else %}recovery{% endif %} this {{ product.name }} item?</h2>
     <div class="admin-form-news-del">
-        <form action="{% url 'admin:product_delete' product.pk %}" method="POST" class="admin-form">
+        <form action="{% url 'admin:product_delete' product.pk %}" method="POST" class="admin-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-news-del-info">
                 <span>Product:</span>

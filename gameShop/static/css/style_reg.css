@@ -115,3 +115,20 @@ form p:last-child{
 h2{
     font-size: 2.5em;
 }
+.veryfy-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+.veryfy-block h3{
+    font-size: 3em;
+}
+.veryfy-block h4{
+    margin-top: 2%;
+    font-size: 2em;
+}
+.veryfy-block b{
+    color:red;
+}

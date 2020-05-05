@@ -219,3 +219,15 @@ color: #8c8c8c;
   font-size: 2em;
   font-weight: 400;
 }
+.current-product-oldprice{
+  text-decoration: line-through;
+  font-size: 1.7em;
+  font-weight: 100;
+  margin: 5%;
+}
+.current-product-item-newprice{
+  color: #309322;
+  font-size: 2.4em;
+  font-weight: bold;
+  padding: 4%;
+}

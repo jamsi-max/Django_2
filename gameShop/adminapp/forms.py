@@ -17,7 +17,7 @@ class AdminCreateUserForm(FormWidgetMixin, UserCreationForm, AgeValidationMixin)
 class AdminUpdateUserForm(FormWidgetMixin, UserChangeForm, AgeValidationMixin):
     class Meta:
         model = ShopUser
-        fields = ('username', 'first_name', 'last_name', 'age', 'email', 'avatar', 'is_staff', 'is_superuser', 'is_active')
+        fields = ('username', 'password', 'first_name', 'last_name', 'age', 'email', 'avatar', 'is_staff', 'is_superuser', 'is_active')
 
     class_all_fields = 'form-item-news-add'
     password = False

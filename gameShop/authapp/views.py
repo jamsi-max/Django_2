@@ -28,14 +28,13 @@ def login(request):
                     'basket': request.user.basket.all(),
                 }
 
-                # result = render_to_string('includes/inc__main_menu.html', context=content, request=request)
                 result = render_to_string('includes/inc__main_menu.html', context=content)
                 return JsonResponse({'result': result})
 
         else:
             return JsonResponse({'result': 0, 'error': login_form.errors})
 
-
+@login_required
 def logout(request):
     if request.is_ajax():
         auth.logout(request)
@@ -110,16 +109,17 @@ def send_verify_mail(user):
         'activation_key': user.activation_key
         })
 
-    title = f'Подтверждение учетной записи {user.username}'
-    message = f'Для подтверждения учетной записи {user.username} на портале' \
-              f'{settings.DOMAIN_NAME} перейдите по ссылке: \n' \
+    title = f'Account confirmation {user.username}'
+    message = f'To confirm your account {user.username} on the portal' \
+              f'{settings.DOMAIN_NAME} follow the link: \n' \
               f'{settings.DOMAIN_NAME}{verify_link}'
     return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
 
 def verify(request, email, activation_key):
     try:
         user = get_object_or_404(ShopUser, email=email)
-        if user.activation_key == activation_key and not user.is_activation_key_expired:
+        if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
             auth.login(request, user)

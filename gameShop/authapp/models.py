@@ -12,7 +12,6 @@ def det_expires_datetime():
 class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to='users_avatar', blank=True)
     age = models.PositiveSmallIntegerField(verbose_name="age")
-
     activation_key = models.CharField(max_length=128, blank=True)
     activation_key_expires = models.DateTimeField(default=det_expires_datetime)
 

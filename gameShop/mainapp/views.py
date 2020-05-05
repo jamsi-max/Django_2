@@ -8,7 +8,6 @@ from basketapp.models import Basket
 from mainapp.models import ProductCategory, Product, MainSocial, Services, News, Team
 from django.conf import settings
 
-
 from authapp.forms import ShopUserLoginForm
 
 # function upload data from file json
@@ -23,9 +22,6 @@ from authapp.forms import ShopUserLoginForm
 #         print("Error load data from BD")
 #         data = []
 #     return data
-
-def get_basket(request):
-    return request.user.basket.all() if request.user.is_authenticated else []
 
 def get_same_products(current_product):
     same_products = list(current_product.category.product_set.filter(is_active=True).exclude(pk=current_product.pk))
@@ -53,17 +49,14 @@ def index(request):
         'team': team,
         'mediaURL': settings.MEDIA_URL,
         'login_form': ShopUserLoginForm(),
-        'basket': get_basket(request), 
     }
     return render(request, 'mainapp/index.html', context=content)
 
 
 def products(request, pk=None, page=1):
     #!!!!!!!!!!! Делаем два прордукта со скидкой 
-    # it = random.sample(get_discount_list(),2)[0]
-    # print(f'{it.name}, {it.price}, {float(it.price)-float(it.price)*(it.discount/100)}')
+    # it = random.sample(get_discount_list(),2)
 
-    print(pk, page)
     if int(pk) is not None and int(pk) != 0:
         products_list = Product.objects.filter(category__pk=pk, is_active=True).order_by('name')
     else:
@@ -86,7 +79,6 @@ def products(request, pk=None, page=1):
         'category': category,
         'mediaURL': settings.MEDIA_URL,
         'login_form': ShopUserLoginForm(),
-        'basket': get_basket(request),
     }
     if request.is_ajax():
         result = render_to_string('includes/inc__product_item.html', context=content)
@@ -105,7 +97,6 @@ def product(request, pk):
         'products_list': get_same_products(current_product)[:4],
         'login_form': ShopUserLoginForm(),
         'mediaURL': settings.MEDIA_URL,
-        'basket': get_basket(request),
     }
     return render(request, 'mainapp/product.html', context=content)
 
@@ -115,6 +106,5 @@ def contact(request):
     content = {
         'page_title': 'контакты',
         'login_form': login_form,
-        'basket': get_basket(request),
     }
     return render(request, 'mainapp/contact.html', context=content)

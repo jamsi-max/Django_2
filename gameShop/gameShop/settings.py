@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mainapp.context_processors.basket',
             ],
         },
     },
@@ -135,8 +136,8 @@ LOGIN_URL = '/'
 
 # JSON_PATH = 'mainapp/json'
 
-# DOMAIN_NAME = 'localhost:8000'
 
+# DOMAIN_NAME = 'localhost:8000'
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = '25'
 # EMAIL_HOST_USER = 'django@gameshop.local'
@@ -150,19 +151,10 @@ LOGIN_URL = '/'
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # EMAIL_FILE_PATH = 'tmp/email-messages/'
 
-DOMAIN_NAME = 'localhost:8000'
+DOMAIN_NAME = 'http://localhost:8000'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = os.environ.setdefault('DJANGO_EMAIL_HOST_USER', 'django@geekshop.local')
 EMAIL_HOST_PASSWORD = os.environ.setdefault('DJANGO_EMAIL_HOST_PASSWORD', 'geekshop')
 EMAIL_USE_SSL = True
-# EMAIL_USE_TLS = True
-
-#вариант python -m smtpd -n -c DebuggingServer localhost:25
-# EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None
- 
-#вариант логирования сообщений почты в виде файлов вместо отправки
-# создать в корне проекта папку tmp/email-messages
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = 'tmp/email-messages/'

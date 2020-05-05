@@ -7,7 +7,7 @@
 {% block contentList %}
     <h2>Are you sure you want to delete this user item?</h2>
     <div class="admin-form-news-del">
-        <form action="{% url 'admin:user_delete' shopuser.pk %}" method="POST" class="admin-form">
+        <form action="{% url 'admin:user_delete' shopuser.pk %}" method="POST" class="admin-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-news-del-info">
                 <span>User:</span>

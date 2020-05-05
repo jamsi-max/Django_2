@@ -14,15 +14,25 @@ class Basket(models.Model):
     
     @property
     def get_price(self):
-        return self.product.price * self.quantity
+        return self.get_discount_price * self.quantity if self.product.discount else self.product.price * self.quantity
+
+    @property
+    def get_discount_price(self):
+        return float(self.product.price) - (float(self.product.price) * (self.product.discount / 100))
 
     @property
     def get_quantity(self):
-        return sum([item.quantity for item in self.user.basket.all()])
+        return sum([item.quantity for item in self.user.basket.all()]) 
 
     @property
     def get_total(self):
-        return sum([item.get_price for item in self.user.basket.all()])
+        total_price = []
+        for item in self.user.basket.all():
+            if item.product.discount:
+                total_price.append(item.get_discount_price*item.quantity)
+            else:
+                total_price.append(float(item.get_price))
+        return sum(total_price)
 
 
     

@@ -28,13 +28,17 @@
                 <div class="product-text-title-price">
                     <div class="product-text-title-block">
                         <span class="product-text-title-top">{{ current_name_list.0 }}{% if current_name_list.1 %}:</span>
-                                <span class="product-text-title-bottom">{{ current_name_list.1 }}</span>
+                            <span class="product-text-title-bottom">{{ current_name_list.1 }}</span>
                             {% else %}
                                 </span>
                             {% endif %}
-                        <span class="product-text-price">${{ current_product.price }}</span>
+                            {% if current_product.discount %}
+                                <span class="current-product-oldprice">{{ current_product.price }} $</span>
+                                <span class="current-product-item-newprice">{{ current_product.get_discount_price|floatformat:2 }} $</span>
+                            {% else %}
+                                <span class="product-text-price">${{ current_product.price }}</span>
+                            {% endif %}
                     </div>
-                    {% comment %} <a class= "buttom-gallery-buy product-text-buy" href="{% url 'basket:add' current_product.pk %}">Buy</a> {% endcomment %}
                     <a name="{{ current_product.pk }}" class= "buttom-gallery-buy product-text-buy" href="#">Buy</a>
                     <span class="product-text-dsc">{{ current_product.desc_long }}</span>
                 </div>  
