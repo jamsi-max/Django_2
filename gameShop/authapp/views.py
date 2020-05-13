@@ -7,8 +7,9 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.core.mail import send_mail
+from django.db import transaction
 
-from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserChangePassword
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserChangePassword, ShopUserProfileEditForm
 from authapp.models import ShopUser
 
 def login(request):
@@ -21,7 +22,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
 
             if user and user.is_active:
-                auth.login(request, user)
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
                 content = {
                     'user': request.user,
@@ -62,21 +63,24 @@ def reg(request):
     }
     return render(request, 'authapp/reg.html', context=content)
 
-
+@transaction.atomic
 @login_required
 def edit(request):
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-
-        if edit_form.is_valid():
+        profile_form = ShopUserProfileEditForm(request.POST, request.FILES, instance=request.user.shopuserprofile)
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
+            # profile_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
     
     content = {
         'page_title': 'edit',
         'edit_form': edit_form,
+        'profile_form': profile_form,
         'mediaURL': settings.MEDIA_URL,
     }
 
@@ -122,7 +126,7 @@ def verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else:
             print(f'error activation user: {user}')
         return render(request, 'authapp/verification.html')

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import random
+import random, os
 
 from basketapp.models import Basket
 from mainapp.models import ProductCategory, Product, MainSocial, Services, News, Team

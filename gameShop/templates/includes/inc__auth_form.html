@@ -9,5 +9,16 @@
         {% endfor %}
         <button id="loginButton" type="button" class="auth-btn-enter">enter</button>  
     </form>
+    <h3 class="auth-with-title">Enter with</h3>
+    <div class="auth-with-social">
+        
+        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="auth-reg-btn auth-with-btn">
+            <i class="fa fa-vk" aria-hidden="true"></i>
+
+        </a>
+        <a href="{% url 'social:begin' 'google-oauth2' %}?next=/" class="auth-reg-btn auth-with-btn">
+            <i class="fa fa-google" aria-hidden="true"></i>
+        </a>
+    </div>
     <a href="{% url 'auth:reg' %}" class="auth-reg-btn">registration</a>
 </div>

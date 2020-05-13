@@ -33,6 +33,7 @@ urlpatterns = [
     re_path(r'^basket/', include('basketapp.urls', namespace='basket')),
     re_path(r'^search/', include('searchapp.urls')),
     re_path(r'^contact/$', mainapp.contact, name='contact'),
+    re_path(r'^auth/verify/', include('social_django.urls', namespace='social')),
     
     # re_path(r'^admin/', admin.site.urls, name='admin'),
 ]

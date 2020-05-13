@@ -1268,3 +1268,18 @@ font-size: 2em;
 .search-item-price-through{
   text-decoration: line-through;
 }
+.auth-with-social{
+  display: flex;
+  border-bottom: 1px solid white;
+  padding-bottom: 3%;
+  justify-content: center;
+}
+.auth-with-title{
+  font-size: 2em;
+  border-top: 1px solid white;
+  padding-top: 2%;
+}
+.auth-with-btn{
+  width: 10%;
+  margin: 5%;  
+}
