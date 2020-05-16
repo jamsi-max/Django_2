@@ -8,7 +8,4 @@
     <li>
         <a href="{% url 'admin:news' %}" class="{% if request.resolver_match.url_name == 'news' %}active{% endif %}">News{% if categories.name %}: categories.name{% endif %}</a>
     </li>
-    <!-- <li>
-        {{ request.resolver_match }}
-    </li> -->
 </ul>

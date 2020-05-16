@@ -35,7 +35,7 @@ h1{
     color: lightcoral;
     border: 1px solid;
     padding: 1%;
-    width: 85px;
+    width: 100px;
 }
 .basket-remove-btn:hover,
 .basket-list-item input:hover{

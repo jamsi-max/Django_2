@@ -1,0 +1,58 @@
+
+{% extends 'ordersapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block order %}
+<div class="order-list">
+
+   <table class="table-orders-list">
+       <thead>
+         <tr>
+           <th>ID</th>
+           <th>Create</th>
+           <th>Update</th>
+           <th>Status</th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for item in object_list %}
+                <tr>
+                    <td class="td1 orders_list">{{ item.pk }}</td>
+                    <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.get_status_display|title }}</td>
+                    <td>
+                        <a class="order-list-btn-hover" href="{#% url 'ordersapp:order_read' item.pk %#}">
+                            view
+                        </a>
+                    </td>
+                    <td>
+                        {% if item.status == 'F' %}
+                            <a class="order-list-btn-hover" href="{% url 'ordersapp:order_update' item.pk %}">
+                            edit
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.status == 'F' %}
+                            <a class="order-list-del-btn order-list-btn-hover" href="{% url 'ordersapp:order_delete' item.pk %}">
+                                delet
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+</div>
+
+<div class="orders-block-btn">
+    <div class="order-new">
+        <a class="order-new-link" href="{% url 'orders:order_create' %}">NEW</a>
+    </div>
+    <div class="edit-home">
+        <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
+    </div>
+</div>
+{% endblock %}

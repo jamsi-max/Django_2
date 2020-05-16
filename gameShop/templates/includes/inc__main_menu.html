@@ -18,16 +18,29 @@
         <div class="menu-link-auth">
             <i class="fa fa-sign-in" aria-hidden="true"></i>
             {% if user.is_authenticated %}
-                <a href="#" class="auth-link auth-logout-link">Logout</a>
-                <a href="{% url 'auth:edit' %}" class="auth-link auth-edit-btn">{{ user.first_name|default:user.username|title }}</a>
+            <a href="#" class="auth-link auth-logout-link">Logout</a>
+            <li class="menu-list auth-menu edit-drop-down">
+                <a href="#" class="auth-link auth-edit-btn">{{ user.first_name|default:user.username|title }}</a>      
+                <ul class="auth-drop-menu">
+                    <li class="auth-drop-item">
+                        <a href="{% url 'auth:edit' %}" class="auth-drop-link auth-drop-edit">Profile</a>    
+                    </li>
+                    <li class="auth-drop-item">
+                        <a href="{% url 'orders:index' %}" class="auth-drop-link auth-drop-order">Order</a>
+                    </li>
+                </ul>
+    </li>
                 <div class="basket-block">
                     {% include 'includes/inc__basket_view.html' %}
                 </div>
             {% else %}    
                 <label for="modal">Login</label>    
-            {% endif %}    
+            {% endif %}
+
             {% if user.is_superuser %}
+            <li class="li-admin-link">
                 <a href="{% url 'admin:index' %}" class="admin-link auth-link auth-edit-btn">ADMIN</a>
+            </li>
             {% endif %}       
         </div>
     </li>

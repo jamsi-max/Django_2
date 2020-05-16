@@ -980,9 +980,9 @@ margin-right: 4px;
 .auth-menu{
   font-size: 1.2em;
 }
-.menu li:first-child{
+/* .menu li:first-child{
   margin-left: 15%;
-}
+} */
 .auth{
   position: fixed;
   width: 100%;
@@ -1101,7 +1101,7 @@ form input:active{
 }
 .admin-link{
   color: #ce2c20;
-  margin-left: 30%;
+  margin-left: 3%;
   font-size: 1.2em;
   border: 1px solid;
   padding: 3%;
@@ -1110,7 +1110,7 @@ form input:active{
 }
 .basket-block{
   position: relative;
-  margin-left: 20%;
+  margin-left: 1%;
 }
 .basket-link{
   text-decoration: none;
@@ -1129,17 +1129,22 @@ form input:active{
 .basket-price{
   font-weight: 500;
   position: absolute;
-  top: 30px;
+  top: 34px;
   left: -11px;
   color: #000000;
 }
 .auth-edit-btn{
-  border: 1px solid;
   padding: 5px;
-}
-.basket-link > i:hover{
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 0.36px;
   color: white;
-  text-shadow: 0 0 1px #000;
+  text-shadow: 0 0 1px #000000;
+}
+.basket-link:hover >i,
+.basket-link:hover >.basket-price{
+  color: white;
+  text-shadow: 0 0 1px #000000;
 }
 .flex-gallery-link{
   position: relative;
@@ -1212,9 +1217,6 @@ font-size: 2em;
   position: relative;
 }
 .search-drop-down{
-  position: absolute;
-}
-.search-drop-down{
   right: -2px;
   position: absolute;
   width: 500px;
@@ -1282,4 +1284,55 @@ font-size: 2em;
 .auth-with-btn{
   width: 10%;
   margin: 5%;  
+}
+.auth-drop-menu{
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 75%;
+  right: 15%;
+  list-style-type: none;
+  width: 140%;
+  height: 120%;
+  justify-content: space-evenly;
+  align-items: center;
+  align-items: center;
+  border-radius: 5px;
+  z-index: 1000;
+}
+.edit-drop-down{
+  position: relative;
+  margin-left: 1%;
+}
+.edit-drop-down:hover .auth-drop-menu{
+  visibility: visible;
+}
+.auth-drop-link{
+  text-decoration: none;
+  color: #fff;
+}
+.auth-drop-link:hover{
+  color: #000000;
+  font-weight: bold;
+}
+.fa-shopping-basket{
+  font-size: 2em;
+}
+.li-admin-link{
+  margin-left: 3%;
+}
+.li-admin-link a:hover{
+  color: red;
+  text-shadow: 0 0 1px #000000;
+}
+.auth-drop-item{
+  margin-left: 0;
+}
+.menu-contact li:first-child{
+  margin-left: 27%;
+}
+.auth-drop-menu li:first-child{
+  margin-left: 0;
 }

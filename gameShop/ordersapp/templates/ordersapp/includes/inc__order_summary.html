@@ -1,0 +1,30 @@
+{% if object %}
+<div class="new-orders-info">
+   <div class="h2">Order №{{ object.pk }} от {{ object.created|date:"Y-m-d H:i:s" }}</div>
+   <br>
+   <div class="h4">Customer: {{ user }}</div>
+   <div class="h4">Update: {{ object.updated|date:"Y-m-d H:i:s" }}</div>
+   <div class="h4">Status: {{ object.get_status_display }}</div>
+   <br>
+   <div class="h4">
+       Total quantity of products: <span class="order_total_quantity">{{ object.get_total_quantity }}</span>
+   </div>
+   <div class="h3">
+       Total price: <span class="order_total_cost">{{ object.get_total_cost }}</span> $
+   </div>
+</div>
+{% else %}
+    <div class="new-orders-info">
+        <div class="h2">New order</div>
+        <br>
+        {% if basket.0 %}
+            <div class="h4">
+                Total quantity of products: <span class="order_total_quantity">{{ basket.0.get_quantity }}</span>
+            </div>
+            <div class="h3">
+                Total price: <span class="order_total_cost">{{ basket.0.get_total|floatformat:2 }}</span>$
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+<br>

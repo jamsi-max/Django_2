@@ -1,0 +1,58 @@
+{% extends "ordersapp/base.html" %}
+{% load static %}
+
+{% block order %}
+   {% include 'ordersapp/includes/inc__order_summary.html' %}
+   {% if basket.0 %}
+        <div class="order_form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <table class="table">
+                    {{ orderitems.management_form }}
+                    {% for form in orderitems.forms %}
+                        {% if forloop.first %}
+                            <thead>
+                            <tr>
+                                {% for field in form.visible_fields %}
+                                    <th class="{% cycle 'td1' 'td2' 'td3' %} order formset_td">
+                                        {{ field.label|capfirst }}
+                                    </th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                        {% endif %}
+                        <tr class="formset_row">
+                            {% for field in form.visible_fields %}
+                                <td class="{% cycle 'td1' 'td2' 'td3' %} order formset_td">
+                                    {% if forloop.first %}
+                                        {% for hidden in form.hidden_fields %}
+                                            {{ hidden }}
+                                        {% endfor %}
+                                    {% endif %}
+                                    {{ field.errors.as_ul }}
+                                    {{ field }}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                        <button type="submit" value="save" class="btn btn-default btn-round form-control last">save</button>
+                        
+                        <div class="orders-create-btn">
+                            <div class="order-back-btn">
+                                <a class="order-back-link" href="{% url 'orders:index' %}">BACK</a>
+                            </div>
+                            <div class="order-home-btn">
+                                <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
+                            </div>
+                        </div>
+                {% include 'ordersapp/includes/inc__order_actions.html' %}
+            </form>
+        </div>
+    {% else %}
+<div class="order-empty-text">
+        <span class="order-empty-text-item">Your basket is empty</span>
+</div>   
+    {% endif %}
+{% endblock %}

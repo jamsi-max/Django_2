@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/style_orders.css' %}">
+{% endblock %}
+
+{% block js%}
+{% endblock %}
+
+{% block header %}
+        <ul class="info">
+            <li class="info-list logo"><a href="{% url 'main' %}" class="logo-link"><span class="historical">Store</span><br><span class="games">GAMES</span></a></li>
+            <li class="info-list contact"><div class="tel">+000 000 0000</div><a class="mail" href="#">jony@geekbrains.ru</a></li>
+        </ul>
+{% endblock %}
+
+
+{% block container %}
+    <h1>Orders - "{{ request.user|title }}"</h2>
+
+    <div class="orders">
+        {% block order %}
+        {% endblock %}
+    </div>
+    
+{% endblock %}
+
+{% block contact %}
+{% endblock %}
