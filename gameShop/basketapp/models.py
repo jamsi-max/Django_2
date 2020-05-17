@@ -1,7 +1,17 @@
 from django.db import models
+from django.db.models import QuerySet
 
 from django.conf import settings
 from mainapp.models import Product
+
+
+class BasketQuerySetManager(QuerySet):
+    def delete(self):
+        for object in self:
+            object.product.quantity += object.quantity
+            object.product.save()
+        super().delete()
+
 
 class Basket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='basket')
@@ -33,6 +43,11 @@ class Basket(models.Model):
             else:
                 total_price.append(float(item.get_price))
         return sum(total_price)
+    
+    def delete(self, *args, **kwargs):
+        self.product.quantity += self.quantity
+        self.product.save()
+        super().delete()
 
 
     
