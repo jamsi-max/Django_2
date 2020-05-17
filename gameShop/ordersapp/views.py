@@ -22,7 +22,8 @@ class OrderList(ListView):
     model = Order
 
     def get_queryset(self):
-        return self.model.objects.filter(is_active=True)
+       return self.model.objects.filter(user=self.request.user, is_active=True)
+
 
 
 class OrderItemsCreate(CreateView):

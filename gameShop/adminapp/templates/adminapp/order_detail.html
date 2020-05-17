@@ -1,7 +1,10 @@
-{% extends "ordersapp/base.html" %}
+{% extends 'adminapp/index.html' %}
 {% load static %}
 
-{% block order %}
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
    {% include 'ordersapp/includes/inc__order_summary.html' %}
    <div class="basket-list">
         {% for item in object.orderitems.select_related %}
@@ -16,14 +19,10 @@
         {% endfor %}
    </div>
    <div class="detail-btn-block">
-   {% include 'ordersapp/includes/inc__order_actions.html' %}
    </div>
     <div class="orders-create-btn">
         <div class="order-back-btn">
-            <a class="order-back-link" href="{% url 'orders:index' %}">ORDERS</a>
-        </div>
-        <div class="order-home-btn">
-            <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
+            <a class="order-back-link" href="{% url 'admin:orders' %}">ORDERS</a>
         </div>
     </div>
 {% endblock %}

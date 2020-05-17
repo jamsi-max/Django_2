@@ -76,3 +76,9 @@ h1{
     margin: 3%;
     font-size: 2em;
 }
+
+.order-new-link {
+	text-decoration: none;
+	color: #838383;
+	font-size: 2em;
+}

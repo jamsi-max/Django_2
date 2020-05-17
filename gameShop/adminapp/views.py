@@ -10,15 +10,30 @@ from django.urls import reverse_lazy
 
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product, News
-from ordersapp.models import Order
+from ordersapp.models import Order, OrderItem
 from adminapp.forms import AdminNewsAddForm, AdminCreateUserForm, AdminUpdateUserForm, AdminCreateCategoryForm, AdminCreateProductForm
+from adminapp.forms import AdminCreateOrderForm, AdminUpdateProductForm
 from adminapp.utils import SuperuserCheckMixin, SoftDeleteMixin, TitleMixin
 
+from ordersapp.views import OrderItemsCreate, OrderItemsUpdate, OrderRead
 
 class UserListView(SuperuserCheckMixin, TitleMixin, ListView):
     title = 'Admin: User'
     model = ShopUser
 
+
+class UserOrdersView(SuperuserCheckMixin, TitleMixin, ListView):
+    title = 'Admin: User Orders'
+    model = Order
+    template_name = 'adminapp/user_orders.html'
+
+    def get_queryset(self):
+       return self.model.objects.filter(user__pk = self.kwargs['pk'], is_active=True)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = ShopUser.objects.filter(pk=self.kwargs['pk'])[0]
+        return context
 
 class UserCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     title = 'Admin: Create User'
@@ -135,9 +150,36 @@ class NewsDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, DeleteVie
     success_url = reverse_lazy('admin:news')
 
 
-# class OrderListView(SuperuserCheckMixin, TitleMixin, ListView):
-#     title = 'Admin: Userc'
-#     model = Order
+class OrdersListView(SuperuserCheckMixin, TitleMixin, ListView):
+    title = 'Admin: Orders'
+    model = Order
+    template_name = 'adminapp/order_list.html'
 
-    # def get_queryset(self):
-    #     return get_object_or_404(Order, pk=self.kwargs['pk'])
+
+class OrdersCreateView(SuperuserCheckMixin, TitleMixin, OrderItemsCreate):
+    title = 'Admin: Create Orders'
+    success_url = reverse_lazy('admin:orders')
+    form_class = AdminCreateOrderForm
+    template_name = 'adminapp/order_form.html'
+
+
+class OrdersUpdateView(SuperuserCheckMixin, TitleMixin, OrderItemsUpdate):
+    title = 'Admin: Update Orders'
+    model = Order
+    success_url = reverse_lazy('admin:orders')
+    form_class = AdminUpdateProductForm
+    template_name = 'adminapp/order_form.html'
+
+
+class OrdersDeleteView(SuperuserCheckMixin, TitleMixin, DeleteView):
+    title = 'Admin: Delete Orders'
+    model = Order
+    template_name = 'adminapp/order_confirm_delete.html'
+    success_url = reverse_lazy('admin:orders')
+
+
+class OrdersRead(SuperuserCheckMixin, TitleMixin, OrderRead):
+    title = 'Admin: Orders Detail'
+    success_url = reverse_lazy('admin:orders')
+    template_name = 'adminapp/order_detail.html'
+

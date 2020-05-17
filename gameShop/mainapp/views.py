@@ -54,7 +54,7 @@ def index(request):
 
 
 def products(request, pk=None, page=1):
-    #!!!!!!!!!!! Делаем два прордукта со скидкой 
+    #!!!!!!!!!!! Create two product discount 
     # it = random.sample(get_discount_list(),2)
 
     if int(pk) is not None and int(pk) != 0:

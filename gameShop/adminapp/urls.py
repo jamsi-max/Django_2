@@ -6,6 +6,7 @@ app_name = 'adminapp'
 
 urlpatterns = [
     re_path(r'^$', adminapp.UserListView.as_view(), name='index'),
+    re_path(r'^user/orders/(?P<pk>\d+)/$', adminapp.UserOrdersView.as_view(), name='user_orders'),
     re_path(r'^user/create/$', adminapp.UserCreateView.as_view(), name='user_create'),
     re_path(r'^user/update/(?P<pk>\d+)/$', adminapp.UserUpdateView.as_view(), name='user_update'),
     re_path(r'^user/delete/(?P<pk>\d+)/$', adminapp.UserDeleteView.as_view(), name='user_delete'),
@@ -26,5 +27,9 @@ urlpatterns = [
     re_path(r'^news/update/(?P<pk>\d+)/$', adminapp.NewsUpdateView.as_view(), name='news_update'),
     re_path(r'^news/delete/(?P<pk>\d+)/$', adminapp.NewsDeleteView.as_view(), name='news_delete'),
 
-    # re_path(r'^order/(?P<pk>\d+)/$', adminapp.OrderListView.as_view(), name='orders'),
+    re_path(r'^order/$', adminapp.OrdersListView.as_view(), name='orders'),
+    re_path(r'^order/read/(?P<pk>\d+)/$', adminapp.OrdersRead.as_view(), name='order_read'),
+    re_path(r'^order/create/$', adminapp.OrdersCreateView.as_view(), name='order_create'),
+    re_path(r'^order/update/(?P<pk>\d+)/$', adminapp.OrdersUpdateView.as_view(), name='order_update'),
+    re_path(r'^order/delete/(?P<pk>\d+)/$', adminapp.OrdersDeleteView.as_view(), name='order_delete'),
 ]

@@ -6,7 +6,6 @@ h1{
 .order-list{
     display: flex;
     justify-content: center;
-    height: 50vh;
 }
 .table-orders-list{
     width: 1400px;
@@ -16,7 +15,7 @@ h1{
 .orders-block-btn{
     display: flex;
     justify-content: center;
-    margin-bottom: 2%;
+    margin: 2%;
 }
 .edit-home,
 .order-new{
@@ -106,7 +105,7 @@ td input{
     background: none;
     text-transform: uppercase;
     font-size: 1.3em;
-    margin-top: 2%;
+    margin: 2%;
 }
 .btn-round:hover{
     color: red;
@@ -263,4 +262,7 @@ form .btn-danger:hover,
 }
 .basket-record img{
     width: 12%;
+}
+.admin-home-btn{
+    margin: 2% auto;
 }

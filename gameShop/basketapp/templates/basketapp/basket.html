@@ -24,7 +24,10 @@
     <div class="basket-list">
         {% include 'includes/inc__basket_list.html' %}
     </div>
-    
+
+    <div class="edit-home order-new">
+        <a class="order-new-link" href="{% url 'orders:order_create' %}">ORDER</a>
+    </div>
     <div class="edit-home">
         <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
     </div>

@@ -1,13 +1,14 @@
-{% extends "ordersapp/base.html" %}
+{% extends 'adminapp/index.html' %}
 {% load static %}
 
-{% block order %}
-{% if basket.0 or object %}
-   {% include 'ordersapp/includes/inc__order_summary.html' %}
-        <div class="order_form">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
+    <div class="admin-form-new-add order_form">
+        <form method="post" class="admin-form-order">
+            {% csrf_token %}
+            {{ form.as_p }}
                 <table class="table">
                     {{ orderitems.management_form }}
                     {% for form in orderitems.forms %}
@@ -37,30 +38,13 @@
                         </tr>
                     {% endfor %}
                 </table>
-                        <button type="submit" value="save" class="btn btn-default btn-round form-control last">save</button>
-                        
-                        <div class="orders-create-btn">
-                            <div class="order-back-btn">
-                                <a class="order-back-link" href="{% url 'orders:index' %}">ORDERS</a>
-                            </div>
-                            <div class="order-home-btn">
-                                <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
-                            </div>
-                        </div>
-                {% include 'ordersapp/includes/inc__order_actions.html' %}
+                <button type="submit" value="save" class="btn btn-default btn-round form-control last">save</button>
+                
+                <div class="orders-create-btn">
+                    <div class="order-back-btn">
+                        <a class="order-back-link" href="{% url 'admin:orders' %}">ORDERS</a>
+                    </div>
+                </div>
             </form>
         </div>
-    {% else %}
-        <div class="order-empty-text">
-                <span class="order-empty-text-item">Your basket is empty</span>
-        </div>
-        <div class="orders-create-btn">
-            <div class="order-back-btn">
-                <a class="order-back-link" href="{% url 'orders:index' %}">ORDERS</a>
-            </div>
-            <div class="order-home-btn">
-                <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
-            </div>
-        </div>   
-    {% endif %}
 {% endblock %}

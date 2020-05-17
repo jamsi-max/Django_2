@@ -2,6 +2,7 @@ from django.db import models
 
 from django.conf import settings
 from mainapp.models import Product
+from adminapp.utils import togle_active
 
 
 class Order(models.Model):
@@ -35,7 +36,7 @@ class Order(models.Model):
         verbose_name_plural = 'orders'
 
     def __str__(self):
-        return f'Current oder: {self.id}'
+        return f'Current order: {self.id}'
 
     def get_total_quantity(self):
         return sum(map(lambda x: x.quantity, self.orderitems.select_related()))
@@ -52,8 +53,10 @@ class Order(models.Model):
             item.product.quantity += item.quantity
             item.product.save()
 
-        self.is_active = False
+        # self.is_active = False
+        togle_active(self)
         self.save()
+
 
 
 class OrderItem(models.Model):
