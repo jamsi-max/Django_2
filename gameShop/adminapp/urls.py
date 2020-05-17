@@ -29,7 +29,7 @@ urlpatterns = [
 
     re_path(r'^order/$', adminapp.OrdersListView.as_view(), name='orders'),
     re_path(r'^order/read/(?P<pk>\d+)/$', adminapp.OrdersRead.as_view(), name='order_read'),
-    re_path(r'^order/create/$', adminapp.OrdersCreateView.as_view(), name='order_create'),
+    # re_path(r'^order/create/$', adminapp.OrdersCreateView.as_view(), name='order_create'),
     re_path(r'^order/update/(?P<pk>\d+)/$', adminapp.OrdersUpdateView.as_view(), name='order_update'),
     re_path(r'^order/delete/(?P<pk>\d+)/$', adminapp.OrdersDeleteView.as_view(), name='order_delete'),
 ]

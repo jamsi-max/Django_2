@@ -156,11 +156,12 @@ class OrdersListView(SuperuserCheckMixin, TitleMixin, ListView):
     template_name = 'adminapp/order_list.html'
 
 
-class OrdersCreateView(SuperuserCheckMixin, TitleMixin, OrderItemsCreate):
-    title = 'Admin: Create Orders'
-    success_url = reverse_lazy('admin:orders')
-    form_class = AdminCreateOrderForm
-    template_name = 'adminapp/order_form.html'
+# class OrdersCreateView(SuperuserCheckMixin, TitleMixin, OrderItemsCreate):
+#     title = 'Admin: Create Orders'
+#     model = Order
+#     success_url = reverse_lazy('admin:orders')
+#     form_class = AdminCreateOrderForm
+#     template_name = 'adminapp/order_form.html'
 
 
 class OrdersUpdateView(SuperuserCheckMixin, TitleMixin, OrderItemsUpdate):
