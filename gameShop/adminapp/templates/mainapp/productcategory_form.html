@@ -11,5 +11,10 @@
             {{ form.as_p }}
             <input type="submit" value="save" class="news-add-btn">
         </form>
-    </div>  
+    </div>
+    <div class="orders-create-btn">
+        <div class="order-back-btn">
+            <a class="order-back-link" href="{% url 'admin:category' %}">BACK</a>
+        </div>  
+    </div>
 {% endblock %}
