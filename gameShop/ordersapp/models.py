@@ -45,7 +45,7 @@ class Order(models.Model):
 
     def get_total_cost(self):
         items = self.orderitems.select_related()
-        return sum(list(map(lambda x: x.quantity * x.product.price, items)))
+        return sum(list(map(lambda x: x.quantity * (float(x.product.price) - float((x.product.price * x.product.discount / 100))), items)))
 
     def delete(self):
         for item in self.orderitems.select_related():
@@ -63,4 +63,4 @@ class OrderItem(models.Model):
 
     @property
     def get_product_cost(self):
-        return self.product.price * self.quantity
+        return  self.quantity * (float(self.product.price) - (float(self.product.price) * self.product.discount/100))

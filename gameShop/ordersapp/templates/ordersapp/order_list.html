@@ -5,7 +5,6 @@
 
 {% block order %}
 <div class="order-list">
-
    <table class="table-orders-list">
        <thead>
          <tr>
@@ -23,7 +22,7 @@
                     <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
                     <td>{{ item.get_status_display|title }}</td>
                     <td>
-                        <a class="order-list-btn-hover" href="{#% url 'ordersapp:order_read' item.pk %#}">
+                        <a class="order-list-btn-hover" href="{% url 'ordersapp:order_read' item.pk %}">
                             view
                         </a>
                     </td>

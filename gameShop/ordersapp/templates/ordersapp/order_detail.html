@@ -1,0 +1,29 @@
+{% extends "ordersapp/base.html" %}
+{% load static %}
+
+{% block order %}
+   {% include 'ordersapp/includes/inc__order_summary.html' %}
+   <div class="basket-list">
+        {% for item in object.orderitems.select_related %}
+            <div class="basket-record">
+                <img src="/media/{{ item.product.image }}" alt="{{ item.product.alt }}">
+                <span class="category-name">{{ item.product.category.name }}</span>
+                <span class="product-name">{{ item.product.name }}</span>
+                <span class="product-price">{{ item.product.get_discount_price|floatformat:2 }}$</span>
+                <span class="product-quantitiy">{{ item.quantity }}</span>
+                <span class="productt-cost-name">{{ item.get_product_cost|floatformat:2 }}$</span>
+            </div>
+        {% endfor %}
+   </div>
+   <div class="detail-btn-block">
+   {% include 'ordersapp/includes/inc__order_actions.html' %}
+   </div>
+    <div class="orders-create-btn">
+        <div class="order-back-btn">
+            <a class="order-back-link" href="{% url 'orders:index' %}">BACK</a>
+        </div>
+        <div class="order-home-btn">
+            <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
+        </div>
+    </div>
+{% endblock %}

@@ -4,12 +4,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from django.urls import reverse_lazy
 
 
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product, News
+from ordersapp.models import Order
 from adminapp.forms import AdminNewsAddForm, AdminCreateUserForm, AdminUpdateUserForm, AdminCreateCategoryForm, AdminCreateProductForm
 from adminapp.utils import SuperuserCheckMixin, SoftDeleteMixin, TitleMixin
 
@@ -18,11 +19,13 @@ class UserListView(SuperuserCheckMixin, TitleMixin, ListView):
     title = 'Admin: User'
     model = ShopUser
 
+
 class UserCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     title = 'Admin: Create User'
     model = ShopUser
     success_url = reverse_lazy('admin:index')
     form_class = AdminCreateUserForm
+
 
 class UserUpdateView(SuperuserCheckMixin, TitleMixin, UpdateView):
     title = 'Admin: Update User'
@@ -30,14 +33,17 @@ class UserUpdateView(SuperuserCheckMixin, TitleMixin, UpdateView):
     success_url = reverse_lazy('admin:index')
     form_class = AdminUpdateUserForm
 
+
 class UserDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, DeleteView):
     title = 'Admin: Delete User'
     model = ShopUser
     success_url = reverse_lazy('admin:index')
 
+
 class CategoryListView(SuperuserCheckMixin, TitleMixin, ListView):
     title = 'Admin: Category'
     model = ProductCategory
+
 
 class CategoryCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     title = 'Admin: Create Category'
@@ -45,11 +51,13 @@ class CategoryCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     success_url = reverse_lazy('admin:category')
     form_class = AdminCreateCategoryForm
 
+
 class CategoryUpdateView(SuperuserCheckMixin, TitleMixin, UpdateView):
     title = 'Admin: Update Category'
     model = ProductCategory
     success_url = reverse_lazy('admin:category')
     form_class = AdminCreateCategoryForm
+
 
 class CategoryDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, DeleteView):
     title = 'Admin: Delete Category'
@@ -62,7 +70,6 @@ class CategoryDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, Delet
 
 @user_passes_test(lambda x: x.is_superuser)
 def product(request, pk, page=1):
-    print(pk, page)
     category = get_object_or_404(ProductCategory, pk=int(pk))
     product_list = category.product_set.all().order_by('-is_active', 'name')
 
@@ -82,17 +89,20 @@ def product(request, pk, page=1):
     }
     return render(request, 'mainapp/product_list.html', context=content)
 
+
 class ProductCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     title = 'Admin: Create Product'
     model = Product
     success_url = reverse_lazy('admin:category')
     form_class = AdminCreateProductForm
 
+
 class ProductUpdateView(SuperuserCheckMixin, TitleMixin, UpdateView):
     title = 'Admin: Update Product'
     model = Product
     success_url = reverse_lazy('admin:category')
     form_class = AdminCreateProductForm
+
 
 class ProductDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, DeleteView):
     title = 'Admin: Delete Product'
@@ -103,6 +113,7 @@ class ProductDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, Delete
 class NewsListView(SuperuserCheckMixin, TitleMixin, ListView):
     title = 'Admin: News'
     model = News
+
 
 class NewsCreateView(SuperuserCheckMixin, TitleMixin, CreateView):
     title = 'Admin: Create News'
@@ -123,3 +134,10 @@ class NewsDeleteView(SuperuserCheckMixin, TitleMixin, SoftDeleteMixin, DeleteVie
     model = News
     success_url = reverse_lazy('admin:news')
 
+
+# class OrderListView(SuperuserCheckMixin, TitleMixin, ListView):
+#     title = 'Admin: Userc'
+#     model = Order
+
+    # def get_queryset(self):
+    #     return get_object_or_404(Order, pk=self.kwargs['pk'])

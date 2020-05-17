@@ -10,7 +10,7 @@
        Total quantity of products: <span class="order_total_quantity">{{ object.get_total_quantity }}</span>
    </div>
    <div class="h3">
-       Total price: <span class="order_total_cost">{{ object.get_total_cost }}</span> $
+       Total price: <span class="order_total_cost">{{ object.get_total_cost|floatformat:2 }}</span> $
    </div>
 </div>
 {% else %}

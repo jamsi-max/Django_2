@@ -6,6 +6,7 @@ from django import forms
 from django.views.generic.edit import DeleteView
 
 
+
 class SuperuserCheckMixin:
     @method_decorator(user_passes_test(lambda x: x.is_superuser))
     def dispatch(self, *args, **kwargs):
@@ -54,3 +55,4 @@ def togle_active(odj):
         else:
             odj.is_active = True
         odj.save()
+

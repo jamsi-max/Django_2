@@ -25,4 +25,6 @@ urlpatterns = [
     re_path(r'^news/add/$', adminapp.NewsCreateView.as_view(), name='news_add'),
     re_path(r'^news/update/(?P<pk>\d+)/$', adminapp.NewsUpdateView.as_view(), name='news_update'),
     re_path(r'^news/delete/(?P<pk>\d+)/$', adminapp.NewsDeleteView.as_view(), name='news_delete'),
+
+    # re_path(r'^order/(?P<pk>\d+)/$', adminapp.OrderListView.as_view(), name='orders'),
 ]

@@ -1,6 +1,6 @@
 {% if object.status == 'F' %}
 <div class="orders-buy-block">
-    <a href="{#% url 'ordersapp:order_forming_complete' object.pk %#}">
+    <a href="{% url 'ordersapp:order_forming_complete' object.pk %}">
         buy
     </a>
     <a href="{#% url 'ordersapp:order_delete' object.pk %#}">

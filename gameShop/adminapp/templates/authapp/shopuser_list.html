@@ -39,6 +39,7 @@
                         {% if object.is_active %}<a href="{% url 'admin:user_update' object.pk %}" class="btn-edit admin-btn-hover">edit</a>{% endif %}
                         <a href="{% url 'admin:user_delete' object.pk %}" class="btn-dell admin-btn-hover">{% if object.is_active %}dell{% else %}recover{% endif %}</a>
                     </div>
+                    {% if object.is_active %}<a href="{#% url 'admin:orders' object.pk %#}" class="btn-products admin-btn-hover">user ordes</a>{% endif %}
                 </div>
             {% endfor %}
         {% endblock contentList %} 

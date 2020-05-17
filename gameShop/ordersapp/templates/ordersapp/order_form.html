@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block order %}
+{% if basket.0 or object %}
    {% include 'ordersapp/includes/inc__order_summary.html' %}
-   {% if basket.0 %}
         <div class="order_form">
             <form method="post">
                 {% csrf_token %}
@@ -51,8 +51,16 @@
             </form>
         </div>
     {% else %}
-<div class="order-empty-text">
-        <span class="order-empty-text-item">Your basket is empty</span>
-</div>   
+        <div class="order-empty-text">
+                <span class="order-empty-text-item">Your basket is empty</span>
+        </div>
+        <div class="orders-create-btn">
+            <div class="order-back-btn">
+                <a class="order-back-link" href="{% url 'orders:index' %}">BACK</a>
+            </div>
+            <div class="order-home-btn">
+                <a class="order-home-link" href="{% url 'main' %}" >HOME</a>
+            </div>
+        </div>   
     {% endif %}
 {% endblock %}

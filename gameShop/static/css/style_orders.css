@@ -150,7 +150,7 @@ td a{
 }
 .orders-create-btn{
     display: flex;
-    margin: 1%;
+    margin: 1% auto 3%;
     justify-content: space-around;
     width: 10%;
 }
@@ -168,7 +168,7 @@ td a{
 .order-empty-text{
     width: 50%;
     text-align: center;
-    margin: 0 auto 14%;
+    margin: 0 auto 5%;
 }
 .order-empty-text-item{
     color: #E91E63;
@@ -240,4 +240,27 @@ form .btn-danger:hover,
     text-transform: uppercase;
     text-align: center;
     padding: 10px;
+}
+.basket-record{
+    display: flex;
+    width: 1400px;
+    margin: 2% auto;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2em;
+}
+.productt-cost-name{
+    color: red;
+    font-size: 1.3em;
+}
+.detail-btn-block{
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+.new-orders-info .h2{
+    margin-bottom: 1%;
+}
+.basket-record img{
+    width: 12%;
 }

@@ -10,7 +10,5 @@ urlpatterns = [
     re_path(r'^create/$', ordersapp.OrderItemsCreate.as_view(), name='order_create'),
     re_path(r'^update/(?P<pk>\d+)/$', ordersapp.OrderItemsUpdate.as_view(), name='order_update'),
     re_path(r'^delete/(?P<pk>\d+)/$', ordersapp.OrderDelete.as_view(), name='order_delete'),
-    
-    # re_path(r'^remove/(?P<pk>\d+)/$', ordersapp.remove, name='remove'),
-    # re_path(r'^update/(?P<pk>\d+)/(?P<quantity>\d+)/$', ordersapp.update),
+    re_path(r'^complete/(?P<pk>\d+)/$', ordersapp.order_forming_complete, name='order_forming_complete'),
 ]
