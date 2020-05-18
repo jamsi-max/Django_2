@@ -5,7 +5,7 @@ $(function() {
         url: "/basket/add/" + target.name + "/",
         success: function(data){
             if (!data.result){
-                $('#modal').prop('checked', true);
+                console.log('no')
             }else{
                 $('.basket-block').html(data.result);
             }

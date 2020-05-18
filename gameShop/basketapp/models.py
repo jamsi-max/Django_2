@@ -7,9 +7,9 @@ from mainapp.models import Product
 
 class BasketQuerySetManager(QuerySet):
     def delete(self):
-        for object in self:
-            object.product.quantity += object.quantity
-            object.product.save()
+        # for object in self:
+        #     object.product.quantity += object.quantity
+        #     object.product.save()
         super().delete()
 
 
@@ -44,10 +44,29 @@ class Basket(models.Model):
                 total_price.append(float(item.get_price))
         return sum(total_price)
     
-    def delete(self, *args, **kwargs):
-        self.product.quantity += self.quantity
-        self.product.save()
-        super().delete()
+    @classmethod
+    def get_item(cls, pk):
+        try:
+            return cls.objects.get(pk=pk)
+        except Exception as e:
+            print(e)
+
+    # def save(self, *args, **kwargs):
+    #     if self.pk:
+    #         self.product.quantity -= self.quantity - self.__class__.get_item(self.pk).quantity
+    #     else:
+    #         self.product.quantity -= self.quantity
+
+    #     # if self.product.quantity <0:
+    #     #     raise ProductQuantityError
+
+    #     self.product.save()
+    #     super().save(*args, **kwargs)
+    
+    # def delete(self, *args, **kwargs):
+    #     self.product.quantity += self.quantity
+    #     self.product.save()
+    #     super().delete()
 
 
     

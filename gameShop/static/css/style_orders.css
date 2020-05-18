@@ -60,7 +60,7 @@ form label{
     font-weight: 400;
 }
 .table{
-    width: 45%;
+    width: 53%;
     padding: 1%;
     border-collapse: collapse;
 }
@@ -70,6 +70,9 @@ thead{
 }
 tr{
     height: 100px;
+}
+.td3{
+    width: 10%;
 }
 #id_status{
     border: 1px solid #838383;

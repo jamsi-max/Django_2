@@ -5,8 +5,11 @@ from django.forms import inlineformset_factory
 from django.db import transaction
 from django.shortcuts import HttpResponseRedirect, get_object_or_404
 from django.urls import reverse
+from django.dispatch import receiver
+from django.db.models.signals import pre_save, pre_delete
 
 from ordersapp.models import Order, OrderItem
+from basketapp.models import Basket
 from ordersapp.forms import OrderForm, OrderItemForm
 
 
@@ -23,7 +26,6 @@ class OrderList(ListView):
 
     def get_queryset(self):
        return self.model.objects.filter(user=self.request.user, is_active=True)
-
 
 
 class OrderItemsCreate(CreateView):
@@ -47,6 +49,7 @@ class OrderItemsCreate(CreateView):
                     basket_item = basket_items[num]
                     form.initial['product'] = basket_item.product
                     form.initial['quantity'] = basket_item.quantity
+                    form.initial['price'] = basket_items.product.price
                 # basket_items.delete()
             else:
                 formset = OrderFormSet()
@@ -85,7 +88,12 @@ class OrderItemsUpdate(UpdateView):
         if self.request.method == 'POST':
             data['orderitems'] = OrderFormSet(self.request.POST, self.request.FILES, instance=self.object)
         elif self.request.method == 'GET':
-            data['orderitems'] = OrderFormSet(instance=self.object)
+            formset = OrderFormSet(instance=self.object)
+            for form in formset.forms:
+                if form.instance.pk:
+                    form.initial['price'] = round(form.instance.product.get_discount_price, 2)
+            data['orderitems'] = formset
+ 
 
         return data
 
@@ -120,3 +128,18 @@ class OrderRead(DetailView):
         return context
 
 
+@receiver(pre_save, sender=OrderItem)
+@receiver(pre_save, sender=Basket)
+def product_quantity_update_save(sender, update_fields, instance, **kwargs):
+    if instance.pk:
+        instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+    else:
+        instance.product.quantity -= instance.quantity
+    instance.product.save()
+
+
+@receiver(pre_delete, sender=OrderItem)
+@receiver(pre_delete, sender=Basket)
+def product_quantity_update_delete(sender, instance, **kwargs):
+   instance.product.quantity += instance.quantity
+   instance.product.save()

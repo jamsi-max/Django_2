@@ -12,8 +12,9 @@ class OrderForm(FormWidgetMixin, forms.ModelForm):
 
 
 class OrderItemForm(FormWidgetMixin, forms.ModelForm):
+    price = forms.CharField(label='price', min_length=1, max_length=16, required=False)
     class Meta:
         model = OrderItem
-        exclude = ()
+        fields = '__all__'
 
     class_all_fields = 'form-control'
