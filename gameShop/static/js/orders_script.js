@@ -6,8 +6,6 @@ window.onload = function () {
     let priceArr = [];
     let $orderTotalQuantityDOM = $('.order_total_quantity');
     
-    // $('.order_total_quantity')
-    // document.querySelector('.order_total_quantity').
 
     let totalForms = parseInt($('input[name="orderitems-TOTAL_FORMS"]').val());
     let orderTotalQuantity = parseInt($orderTotalQuantityDOM.text()) || 0;
@@ -24,25 +22,24 @@ window.onload = function () {
     
 
     function orderSummaryUpdate(orderitemPrice, deltaQuantity) {
-        // console.log(orderitemPrice);
-        // console.log(deltaQuantity);
         deltaCost = orderitemPrice * deltaQuantity;
         orderTotalCost = Number((orderTotalCost + deltaCost).toFixed(2));
         orderTotalQuantity = orderTotalQuantity + deltaQuantity;
         
         $('.order_total_cost').html(orderTotalCost.toString());
         $orderTotalQuantityDOM.html(orderTotalQuantity.toString());
+        
     }
 
-        function deleteOrderItem(row) {
-            let targetName = row[0].querySelector('input[type="number"]').name;
-            orderitemNum = parseInt(targetName.replace('orderitems-', '').replace('-quantity', ''));
-            if (quantityArr[orderitemNum] == undefined){
-                quantityArr[orderitemNum] = 0;
-                priceArr[orderitemNum] = 0;
-            }
-            deltaQuantity = -quantityArr[orderitemNum];
-            orderSummaryUpdate(priceArr[orderitemNum], deltaQuantity);
+    function deleteOrderItem(row) {
+        let targetName = row[0].querySelector('input[type="number"]').name;
+        orderitemNum = parseInt(targetName.replace('orderitems-', '').replace('-quantity', ''));
+        if (quantityArr[orderitemNum] == undefined){
+            quantityArr[orderitemNum] = 0;
+            priceArr[orderitemNum] = 0;
+        }
+        deltaQuantity = -quantityArr[orderitemNum];
+        orderSummaryUpdate(priceArr[orderitemNum], deltaQuantity);
     }
 
     if (!orderTotalQuantity) {
@@ -81,9 +78,45 @@ window.onload = function () {
         removed: deleteOrderItem
     });
 
+    // $orderForm.on('change', 'select', function (event) {
+    //     let target = event.target;
+    //     console.log(target);
+    // });
+
     $orderForm.on('change', 'select', function (event) {
-        let target = event.target;
-        console.log(target);
+        $.ajax({
+            url: "/orders/get_price/",
+            data: {'data': event.target.value},
+            success: function(data){
+                if (!data.result){
+                    console.log(status)
+                }else{
+                    orderitemNum = parseInt(event.target.name.replace('orderitems-', '').replace('-product', ''));
+                    if (priceArr[orderitemNum]) {
+                        let oldTotalPrice = priceArr[orderitemNum] * quantityArr[orderitemNum]
+                        let oldQuantity = quantityArr[orderitemNum]
+                        priceArr[orderitemNum] = data.result;
+                        quantityArr[orderitemNum] = parseInt($('#id_orderitems-'+orderitemNum+'-quantity').val());
+                        if (isNaN(quantityArr[orderitemNum])){
+                            quantityArr[orderitemNum] = 0;
+                        };
+                        orderTotalCost = Number((orderTotalCost - oldTotalPrice + (priceArr[orderitemNum]*quantityArr[orderitemNum])).toFixed(2));
+                        orderTotalQuantity = orderTotalQuantity - oldQuantity + quantityArr[orderitemNum];
+                        $('.order_total_cost').html(orderTotalCost.toString());
+                        $orderTotalQuantityDOM.html(orderTotalQuantity.toString());
+                    } else {
+                        priceArr[orderitemNum] = data.result;
+                        quantityArr[orderitemNum] = parseInt($('#id_orderitems-'+orderitemNum+'-quantity').val());
+                        if (isNaN(quantityArr[orderitemNum])){ 
+                            quantityArr[orderitemNum] = 0;
+                        };
+                        orderSummaryUpdate(priceArr[orderitemNum], quantityArr[orderitemNum]);
+                    }
+                    $('#'+event.target.id).parent().next().next().html("<span class='orderitems-"+ orderitemNum +"-price'>" + data.result + " $</span>");
+                }
+            },
+        });
+    event.preventDefault();
     });
 
 };
