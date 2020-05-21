@@ -4,6 +4,7 @@
 {% block css %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_orders.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -44,7 +45,7 @@
         {% endblock contentList %} 
     </div>
          
-    <div class="edit-home">
+    <div class="edit-home admin-home-btn">
             <a href="{% url 'main' %}" class="edit-home-btn">HOME</a>
     </div>
          

@@ -1,0 +1,50 @@
+
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+
+{% block contentList %}
+<div class="order-list">
+   <table class="table-orders-list">
+       <thead>
+         <tr>
+           <th>ID</th>
+           <th>Create</th>
+           <th>Update</th>
+           <th>Status</th>
+           <th>User</th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for item in object_list %}
+                <tr class="{% if not item.is_active %}no-active{% endif %}">
+                    <td class="td1 orders_list">{{ item.pk }}</td>
+                    <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.get_status_display|title }}</td>
+                    <td>{{ item.user|title }}</td>
+                    <td>
+                    {% if item.is_active %}
+                        <a class="order-list-btn-hover" href="{% url 'admin:order_read' item.pk %}">
+                            view
+                        </a>
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if item.is_active %}
+                        <a class="order-list-btn-hover" href="{% url 'admin:order_update' item.pk %}">
+                        edit
+                        </a>
+                    {% endif %}
+                    </td>
+                    <td>
+                        <a class="order-list-del-btn order-list-btn-hover" href="{% url 'adminapp:order_delete' item.pk %}">
+                            {% if item.is_active %}delete{% else %}recover{% endif %}
+                        </a>
+                    </td>
+                </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+</div>
+{% endblock %}

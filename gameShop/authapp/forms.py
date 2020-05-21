@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from django import forms
 import random, hashlib
 
-from authapp.models import ShopUser
+from authapp.models import ShopUser, ShopUserProfile
 from mainapp.models import ProductCategory
 from adminapp.utils import FormWidgetMixin, AgeValidationMixin
 
@@ -41,6 +41,15 @@ class ShopUserEditForm(FormWidgetMixin, UserChangeForm, AgeValidationMixin):
     class Meta:
         model = ShopUser
         fields = ('username', 'password', 'first_name', 'age', 'email', 'avatar')
+
+    class_all_fields = 'form-reg-item'
+    password = False
+
+
+class ShopUserProfileEditForm(FormWidgetMixin, forms.ModelForm, AgeValidationMixin):
+    class Meta:
+        model = ShopUserProfile
+        exclude = ('user',)
 
     class_all_fields = 'form-reg-item'
     password = False

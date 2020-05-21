@@ -1,3 +1,5 @@
+client_secret_996869857000-lob0i1h8soc080mac5ulg4muj1eg821a.apps.googleusercontent.com.json
+
 # Created by https://www.gitignore.io/api/git,django,python,pycharm,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=git,django,python,pycharm,visualstudiocode
 
@@ -10,6 +12,10 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
+
+local_settings.py
+prod_settings.py
+config
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.

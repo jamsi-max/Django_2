@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.conf.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 import mainapp.views as mainapp
 import authapp.views as authapp
 import adminapp.views as adminapp
 import searchapp.views as searchapp
-from django.conf.urls import include
-from django.conf import settings
-from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -33,6 +33,8 @@ urlpatterns = [
     re_path(r'^basket/', include('basketapp.urls', namespace='basket')),
     re_path(r'^search/', include('searchapp.urls')),
     re_path(r'^contact/$', mainapp.contact, name='contact'),
+    re_path(r'^auth/verify/', include('social_django.urls', namespace='social')),
+    re_path(r'^orders/', include('ordersapp.urls', namespace='orders')),
     
     # re_path(r'^admin/', admin.site.urls, name='admin'),
 ]

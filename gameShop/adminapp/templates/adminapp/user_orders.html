@@ -1,0 +1,42 @@
+
+{% extends 'adminapp/index.html' %}
+{% load static %}
+
+{% block adminMenu %}
+{% endblock %}
+
+{% block contentList %}
+<h1>Orders: {{ user|title }}</h1>
+<div class="order-list">
+   <table class="table-orders-list">
+       <thead>
+         <tr>
+           <th>ID</th>
+           <th>Create</th>
+           <th>Update</th>
+           <th>Status</th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for item in object_list %}
+                <tr>
+                    <td class="td1 orders_list">{{ item.pk }}</td>
+                    <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.get_status_display|title }}</td>
+                    <td>
+                        <a class="order-list-btn-hover" href="{% url 'admin:order_read' item.pk %}">
+                            view
+                        </a>
+                    </td>
+                </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+</div>
+<div class="orders-create-btn">
+    <div class="order-back-btn">
+        <a class="order-back-link" href="{% url 'admin:index' %}">BACK</a>
+    </div>
+</div>
+{% endblock %}

@@ -11,6 +11,8 @@ def forwards_func(apps, schema_editor):
     news_model = apps.get_model("mainapp", "News")
     team_model = apps.get_model("mainapp", "Team")
     user_model = apps.get_model("authapp", "ShopUser")
+    user_prof_model = apps.get_model("authapp", "ShopUserProfile")
+
 
     user_model.objects.create(
         email="gameshop@mail.ru",
@@ -28,6 +30,7 @@ def forwards_func(apps, schema_editor):
         is_superuser="False",
         age=26,
     )
+
 
     pro_cat_obj = pro_cat_model.objects.create(
         pk=1,
@@ -529,7 +532,8 @@ def reverse_func(apps, schema_editor):
     serv_model = apps.get_model("mainapp", "Services")
     news_model = apps.get_model("mainapp", "News")
     team_model = apps.get_model("mainapp", "Team")
-    user_model = apps.get_model("authapp", "ShopUser")  
+    user_model = apps.get_model("authapp", "ShopUser")
+    user_prof_model = apps.get_model("authapp", "ShopUserProfile")  
       
     pro_cat_model.objects.all().delete()
     prod_model.objects.all().delete()
@@ -538,6 +542,7 @@ def reverse_func(apps, schema_editor):
     news_model.objects.all().delete()
     team_model.objects.all().delete()
     user_model.objects.all().delete()
+    user_prof_model.objects.all().delete()
 
 class Migration(migrations.Migration):
 
