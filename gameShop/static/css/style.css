@@ -1167,13 +1167,16 @@ form input:active{
   transition: opacity .3s, visibility .3s;
 }
 .flex-gallery-item-desc h3{
-font-size: 2em;
+  font-size: 2em;
+  padding: 5%;
+  padding: 2px;
 }
 .flex-gallery-item-desc p{
   letter-spacing: 0.2em;
   line-height: 1.4em;
-  font-size: 1.2em;
+  padding: 5%;
 }
+
 .flex-gallery-item-desc .flex-gallery-item-price{
   color: rgb(0, 255, 8);
   font-weight: bold;
@@ -1202,14 +1205,14 @@ font-size: 2em;
 }
 .flex-gallery-item-newprice{
   color: #00ff08;
-  font-size: 2.8em;
+  font-size: 2.3em;
   font-weight: bold;
   padding: 1%;
 }
 .flex-gallery-item-oldprice{
   color: #efff00;
   text-decoration: line-through;
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 400;
 }
 .search{

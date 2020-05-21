@@ -37,6 +37,10 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category})"
+    
+    @classmethod
+    def get_items(cls):
+        return cls.objects.filter(is_active=True)
 
     def get_absolute_url(self):
         return reverse('products:product', kwargs={'pk': self.pk}) 

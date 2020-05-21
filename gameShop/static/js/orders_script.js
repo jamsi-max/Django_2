@@ -27,8 +27,7 @@ window.onload = function () {
         orderTotalQuantity = orderTotalQuantity + deltaQuantity;
         
         $('.order_total_cost').html(orderTotalCost.toString());
-        $orderTotalQuantityDOM.html(orderTotalQuantity.toString());
-        
+        $orderTotalQuantityDOM.html(orderTotalQuantity.toString()); 
     }
 
     function deleteOrderItem(row) {

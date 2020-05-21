@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponseRedirect
 from django import forms
 
 from django.views.generic.edit import DeleteView
-
+# from mainapp.models import Product
 
 
 class SuperuserCheckMixin:

@@ -6,7 +6,7 @@
             <img class="search-item-img" src="{{ mediaURL }}{{ object.image|default:'no-image.jpg' }}" alt="{{ object.alt }}">
             <span class="search-item-name">{{ object.name }}</span>
             <span class="{% if object.discount %}search-item-price-through{% endif %}">{{ object.price }}$</span>
-            <span class="search-item-discount">{{ object.discount }}%</span>
+            {% if object.discount %}<span class="search-item-discount">{{ object.discount }}%</span>{% endif %}
         </a>
 
     {% endfor %}
