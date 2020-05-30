@@ -31,7 +31,7 @@ class Product(models.Model):
     alt = models.CharField(verbose_name='короткое имя продукта', max_length=64, blank=True)
     quantity = models.PositiveIntegerField(verbose_name='количество товара', default=0)
     discount = models.PositiveIntegerField(verbose_name='скидка на товара', default=0)
-    is_active = models.BooleanField(verbose_name='удален', default=True)
+    is_active = models.BooleanField(verbose_name='удален', default=True, db_index=True)
     created_at = models.DateTimeField(verbose_name='дата добавления товара', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='дата изменения карточки товара', auto_now=True)
 

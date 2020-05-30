@@ -38,6 +38,13 @@ class Order(models.Model):
     def __str__(self):
         return f'Current order: {self.id}'
 
+    def get_summary(self):
+        items = self.orderitems.select_related()
+        return {
+            'total_cost': sum(map(lambda x: x.quantity * (float(x.product.price) - float((x.product.price * x.product.discount / 100))), items)),
+            'total_quantity': sum(map(lambda x: x.quantity, items))
+        }
+
     def get_total_quantity(self):
         return sum(map(lambda x: x.quantity, self.orderitems.select_related()))
 
@@ -46,7 +53,7 @@ class Order(models.Model):
 
     def get_total_cost(self):
         items = self.orderitems.select_related()
-        return sum(list(map(lambda x: x.quantity * (float(x.product.price) - float((x.product.price * x.product.discount / 100))), items)))
+        return sum(map(lambda x: x.quantity * (float(x.product.price) - float((x.product.price * x.product.discount / 100))), items))
 
     def delete(self,  *args, **kwargs):
         for item in self.orderitems.select_related():

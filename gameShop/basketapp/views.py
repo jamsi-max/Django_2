@@ -11,7 +11,7 @@ from django.conf import settings
 def index(request):
     content = {
         'page_title': 'basket',
-        'basket': request.user.basket.order_by('-product__price'),
+        'basket': request.user.basket.select_related('product__category').order_by('-product__price'),
         'mediaURL': settings.MEDIA_URL,
     }
     return render(request, 'basketapp/basket.html', context=content)
@@ -57,7 +57,7 @@ def update(request, pk, quantity):
             item.delete()
 
         content = {
-            'basket': request.user.basket.order_by('-product__price'),
+            'basket': request.user.basket.select_related('product__category').order_by('-product__price'),
             'mediaURL': settings.MEDIA_URL,
         }
 

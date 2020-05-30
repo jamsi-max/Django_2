@@ -10,26 +10,6 @@ def forwards_func(apps, schema_editor):
     serv_model = apps.get_model("mainapp", "Services")
     news_model = apps.get_model("mainapp", "News")
     team_model = apps.get_model("mainapp", "Team")
-    user_model = apps.get_model("authapp", "ShopUser")
-    user_prof_model = apps.get_model("authapp", "ShopUserProfile")
-
-
-    user_model.objects.create(
-        email="gameshop@mail.ru",
-        password=make_password('geekbrains'),
-        username="django",
-        is_staff="True",
-        is_superuser="True",
-        age=25,
-    )
-
-    user_model.objects.create(
-        email="ddfgt@bk.ru",
-        password=make_password('uelhjy123'),
-        username="user1",
-        is_superuser="False",
-        age=26,
-    )
 
 
     pro_cat_obj = pro_cat_model.objects.create(
@@ -532,8 +512,6 @@ def reverse_func(apps, schema_editor):
     serv_model = apps.get_model("mainapp", "Services")
     news_model = apps.get_model("mainapp", "News")
     team_model = apps.get_model("mainapp", "Team")
-    user_model = apps.get_model("authapp", "ShopUser")
-    user_prof_model = apps.get_model("authapp", "ShopUserProfile")  
       
     pro_cat_model.objects.all().delete()
     prod_model.objects.all().delete()
@@ -541,8 +519,6 @@ def reverse_func(apps, schema_editor):
     serv_model.objects.all().delete()
     news_model.objects.all().delete()
     team_model.objects.all().delete()
-    user_model.objects.all().delete()
-    user_prof_model.objects.all().delete()
 
 class Migration(migrations.Migration):
 
