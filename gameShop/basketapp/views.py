@@ -4,6 +4,7 @@ from basketapp.models import Basket
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.db.models import F
 
 from django.conf import settings
 
@@ -11,7 +12,9 @@ from django.conf import settings
 def index(request):
     content = {
         'page_title': 'basket',
-        'basket': request.user.basket.order_by('-product__price'),
+        'basket': request.user.basket.select_related(
+            'product__category'
+            ).order_by('-product__price'),
         'mediaURL': settings.MEDIA_URL,
     }
     return render(request, 'basketapp/basket.html', context=content)
@@ -27,8 +30,9 @@ def add(request, pk):
 
             if not basket_item:
                 basket_item = Basket(user=request.user, product=product)
-            
+
             basket_item.quantity += 1
+            #basket_item.quantity = F('quantity') + 1
             basket_item.save()
 
             content = {

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from authapp.models import ShopUser
 from mainapp.models import Product, ProductCategory, News
 from ordersapp.models import Order
-from adminapp.utils import FormWidgetMixin, AgeValidationMixin
+from adminapp.utils import FormWidgetMixin, AgeValidationMixin, DiscountValidationMixin
 
 
 class AdminCreateUserForm(FormWidgetMixin, UserCreationForm, AgeValidationMixin):
@@ -40,7 +40,7 @@ class AdminNewsAddForm(FormWidgetMixin, forms.ModelForm):
     class_all_fields = 'form-item-news-add'
 
 
-class AdminCreateProductForm(FormWidgetMixin, forms.ModelForm):
+class AdminCreateProductForm(FormWidgetMixin, DiscountValidationMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = ('category', 'name', 'desc', 'desc_long', 'price', 'quantity', 'discount', 'is_active', 'image', 'alt')
@@ -56,7 +56,7 @@ class AdminCreateOrderForm(FormWidgetMixin, forms.ModelForm):
     class_all_fields = 'form-control'
 
 
-class AdminUpdateProductForm(FormWidgetMixin, forms.ModelForm):
+class AdminUpdateProductForm(FormWidgetMixin, DiscountValidationMixin, forms.ModelForm):
     class Meta:
         model = Order
         exclude = ('user',)

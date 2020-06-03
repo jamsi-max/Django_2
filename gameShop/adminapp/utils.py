@@ -49,6 +49,14 @@ class AgeValidationMixin:
             return age
 
 
+class DiscountValidationMixin:
+    def clean_discount(self):
+            discount = self.cleaned_data['discount']
+            if discount < 0 or discount > 90:
+                raise forms.ValidationError(f'The discount cannot be less than 0 or more than 90%')
+            return discount
+
+
 def togle_active(odj):
         if odj.is_active:
             odj.is_active = False

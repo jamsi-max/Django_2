@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,6 +36,11 @@ INSTALLED_APPS = [
     'adminapp.apps.AdminappConfig',
     'searchapp.apps.SearchappConfig',
     'ordersapp.apps.OrdersappConfig',
+    
+    # profiler
+    'debug_toolbar',
+    'template_profiler_panel',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -42,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', # profiler
 ]
 
 ROOT_URLCONF = 'gameShop.urls'
@@ -126,10 +137,10 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
 )
 
-#SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('DJANGO_SOCIAL_AUTH_VK_OAUTH2_KEY')
-#SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('DJANGO_SSOCIAL_AUTH_VK_OAUTH2_SECRET')
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('DJANGO_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('DJANGO_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('DJANGO_SOCIAL_AUTH_VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('DJANGO_SSOCIAL_AUTH_VK_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('DJANGO_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('DJANGO_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 LOGIN_ERROR_URL = '/'
 
@@ -162,7 +173,27 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-try:
-    from .local_settings import *
-except ImportError:
-    from .prod_settings import *
+if DEBUG:
+
+   DEBUG_TOOLBAR_CONFIG = {
+       'SHOW_TOOLBAR_CALLBACK': lambda x: True,
+   }
+
+   DEBUG_TOOLBAR_PANELS = [
+       'debug_toolbar.panels.versions.VersionsPanel',
+       'debug_toolbar.panels.timer.TimerPanel',
+       'debug_toolbar.panels.settings.SettingsPanel',
+       'debug_toolbar.panels.headers.HeadersPanel',
+       'debug_toolbar.panels.request.RequestPanel',
+       'debug_toolbar.panels.sql.SQLPanel',
+       'debug_toolbar.panels.templates.TemplatesPanel',
+       'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+       'debug_toolbar.panels.cache.CachePanel',
+       'debug_toolbar.panels.signals.SignalsPanel',
+       'debug_toolbar.panels.logging.LoggingPanel',
+       'debug_toolbar.panels.redirects.RedirectsPanel',
+       'debug_toolbar.panels.profiling.ProfilingPanel',
+       'template_profiler_panel.panels.template.TemplateProfilerPanel',
+   ]
+
+

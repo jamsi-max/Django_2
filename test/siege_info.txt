@@ -1,0 +1,77 @@
+New configuration template added to /home/device/.siege
+Run siege -C to view the current settings in that file
+** SIEGE 4.0.4
+** Preparing 1 concurrent users for battle.
+The server is now under siege...
+Transactions:		         917 hits
+Availability:		       99.78 %
+Elapsed time:		       51.44 secs
+Data transferred:	        0.79 MB
+Response time:		        0.04 secs
+Transaction rate:	       17.83 trans/sec
+Throughput:		        0.02 MB/sec
+Concurrency:		        0.67
+Successful transactions:         133
+Failed transactions:	           2
+Longest transaction:	        0.34
+Shortest transaction:	        0.00
+
+Whith debug True:
+
+[debug] browser.c:870 attempting connection to 127.0.0.1:8000
+[debug] browser.c:885 creating new socket:     127.0.0.1:8000
+[debug] browser.c:905 good socket connection:  127.0.0.1:8000
+GET /auth/login/ HTTP/1.1
+Host: 127.0.0.1:8000
+Cookie: SameSite=Lax
+Accept: */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (pc-x86_64-linux-gnu) Siege/4.0.4
+Connection: close
+
+
+HTTP/1.1 500 Internal Server Error
+Date: Wed, 27 May 2020 00:31:00 GMT
+Server: WSGIServer/0.2 CPython/3.6.9
+Content-Type: text/html
+X-Frame-Options: SAMEORIGIN
+Content-Length: 27
+Vary: Cookie
+
+[debug] browser.c:870 attempting connection to 127.0.0.1:8000
+[debug] browser.c:885 creating new socket:     127.0.0.1:8000
+[debug] browser.c:905 good socket connection:  127.0.0.1:8000
+GET /basket/add/1/ HTTP/1.1
+Host: 127.0.0.1:8000
+Cookie: SameSite=Lax
+Accept: */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (pc-x86_64-linux-gnu) Siege/4.0.4
+Connection: close
+
+
+HTTP/1.1 500 Internal Server Error
+Date: Wed, 27 May 2020 00:31:06 GMT
+Server: WSGIServer/0.2 CPython/3.6.9
+Content-Type: text/html
+X-Frame-Options: SAMEORIGIN
+Content-Length: 27
+Vary: Cookie
+
+
+siege -i -f urls.txt -d1 -r29 -c25 --debug
+
+Transactions:		       19368 hits
+Availability:		       99.76 %
+Elapsed time:		      195.40 secs
+Data transferred:	       16.48 MB
+Response time:		        0.21 secs
+Transaction rate:	       99.12 trans/sec
+Throughput:		        0.08 MB/sec
+Concurrency:		       20.87
+Successful transactions:        2848
+HTTP OK received:	        2319
+Failed transactions:	          46
+Longest transaction:	       15.61
+Shortest transaction:	        0.00
+

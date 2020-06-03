@@ -17,6 +17,7 @@ from email.mime.text import MIMEText
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserChangePassword, ShopUserProfileEditForm
 from authapp.models import ShopUser
 
+
 def login(request):
     if request.is_ajax():
         login_form = ShopUserLoginForm(data=request.POST)

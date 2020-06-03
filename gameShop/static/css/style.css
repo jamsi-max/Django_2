@@ -154,7 +154,10 @@ body {
     border-bottom: 1px solid #ffffff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+}
+.menu-contact li:first-child {
+  margin-left: 43%;
 }
 .menu-list {
   display: inline-block;
@@ -1331,9 +1334,6 @@ form input:active{
 }
 .auth-drop-item{
   margin-left: 0;
-}
-.menu-contact li:first-child{
-  margin-left: 27%;
 }
 .auth-drop-menu li:first-child{
   margin-left: 0;
